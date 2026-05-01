@@ -1,6 +1,6 @@
 # DOTC Admin Panel — QA Automation Suite
 
-End-to-end test automation for the DOTC Admin Panel (`https://admin-dotc.alianhub.com/`) using **Python + Playwright + pytest + Allure**.
+End-to-end test automation for the DOTC Admin Panel (`https://your-admin-panel-url.com/`) using **Python + Playwright + pytest + Allure**.
 
 ---
 
@@ -69,7 +69,7 @@ playwright install chromium
 
 # 4. Configure credentials
 # Copy the example below into a .env file in the project root
-DOTC_BASE_URL=https://admin-dotc.alianhub.com
+DOTC_BASE_URL=https://your-admin-panel-url.com
 DOTC_EMAIL=your-admin@email.com
 DOTC_PASSWORD=your-password
 
@@ -109,7 +109,7 @@ pytest -m edge_case
 
 | Variable         | Default                            | Description                |
 | ---------------- | ---------------------------------- | -------------------------- |
-| `DOTC_BASE_URL`  | `https://admin-dotc.alianhub.com`  | Application base URL       |
+| `DOTC_BASE_URL`  | `https://your-admin-panel-url.com`  | Application base URL       |
 | `DOTC_EMAIL`     | `admin@dotc.com`                   | Valid login email          |
 | `DOTC_PASSWORD`  | *(set via .env)*                   | Valid login password       |
 | `HEADLESS`       | `true`                             | Run browser headless       |

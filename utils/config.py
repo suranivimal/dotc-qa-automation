@@ -13,13 +13,13 @@ import os
 load_dotenv()
 
 # ─── Base URLs ──────────────────────────────────────────────────────────────
-BASE_URL = os.getenv("DOTC_BASE_URL", "https://admin-dotc.alianhub.com")
+BASE_URL = os.getenv("DOTC_BASE_URL", "")
 LOGIN_URL = f"{BASE_URL}/"
 USER_MANAGEMENT_URL = f"{BASE_URL}/user-management"
 
 # ─── Credentials ────────────────────────────────────────────────────────────
 # Override via env vars in CI (GitHub Actions secrets, etc.)
-VALID_EMAIL = os.getenv("DOTC_EMAIL", "admin@dotc.com")
+VALID_EMAIL = os.getenv("DOTC_EMAIL", "")
 VALID_PASSWORD = os.getenv("DOTC_PASSWORD", "")
 
 INVALID_EMAIL = "wrong@example.com"

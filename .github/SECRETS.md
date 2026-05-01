@@ -6,7 +6,7 @@ Go to: **GitHub repo → Settings → Secrets and variables → Actions → New 
 
 | Secret Name      | Description                        | Example                          |
 |------------------|------------------------------------|----------------------------------|
-| `DOTC_BASE_URL`  | Admin panel base URL               | `https://admin-dotc.alianhub.com` |
+| `DOTC_BASE_URL`  | Admin panel base URL               | `https://your-admin-panel-url.com` |
 | `DOTC_EMAIL`     | Admin login email                  | `admin@dotc.com`                 |
 | `DOTC_PASSWORD`  | Admin login password               | `YourStrongPassword`             |
 
