@@ -1,0 +1,21 @@
+10:29:50 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+10:29:50 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:29:52 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:29:52 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:29:52 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+10:29:52 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:29:52 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+10:29:52 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:29:52 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+10:29:54 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+10:29:54 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+10:29:54 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+10:29:54 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+10:29:58 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+10:29:58 │ [92mINFO    [0m │ TC-UM-021 │ [96m[Step 01] Entering a 500-character search string[0m
+10:29:58 │ [92mINFO    [0m │ user_mgmt_page │ [96mSearching for: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'[0m
+10:29:58 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Search input'[0m
+10:30:00 │ [92mINFO    [0m │ user_mgmt_page │ [96mClearing search input[0m
+10:30:02 │ [92mINFO    [0m │ TC-UM-021 │ [96m[Step 01] ✅ PASSED — Long search string handled gracefully[0m
+10:30:02 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_long_search_string_chromium_.webm[0m

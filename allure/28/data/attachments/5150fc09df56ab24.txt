@@ -1,0 +1,21 @@
+10:28:27 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+10:28:27 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:28:29 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:28:29 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:28:29 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+10:28:29 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:28:29 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+10:28:29 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:28:29 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+10:28:31 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+10:28:31 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+10:28:31 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+10:28:31 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+10:28:33 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+10:28:33 │ [92mINFO    [0m │ user_mgmt_page │ [96mParsed 10 user rows[0m
+10:28:33 │ [92mINFO    [0m │ TC-UM-039 │ [96m[Step 01] List row status: 'Active'[0m
+10:28:33 │ [92mINFO    [0m │ user_mgmt_page │ [96mClicking View on row index 0[0m
+10:28:37 │ [92mINFO    [0m │ TC-UM-039 │ [96m[Step 02] Detail page status: 'ACTIVE'[0m
+10:28:37 │ [92mINFO    [0m │ TC-UM-039 │ [96m[Step 02] ✅ PASSED — Detail status 'ACTIVE' matches list status 'Active'[0m
+10:28:37 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_detail_status_matches_list_chromium_.webm[0m

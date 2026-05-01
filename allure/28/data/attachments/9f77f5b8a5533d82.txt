@@ -1,0 +1,11 @@
+10:22:47 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:22:49 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:22:49 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:22:49 │ [92mINFO    [0m │ TC-LOGIN-007 │ [96m[Step 01] Verify email input is visible[0m
+10:22:49 │ [92mINFO    [0m │ TC-LOGIN-007 │ [96m[Step 01] ✅ PASSED — Email input visible[0m
+10:22:49 │ [92mINFO    [0m │ TC-LOGIN-007 │ [96m[Step 02] Verify password input is visible[0m
+10:22:49 │ [92mINFO    [0m │ TC-LOGIN-007 │ [96m[Step 02] ✅ PASSED — Password input visible[0m
+10:22:49 │ [92mINFO    [0m │ TC-LOGIN-007 │ [96m[Step 03] Verify Continue button is visible[0m
+10:22:49 │ [92mINFO    [0m │ TC-LOGIN-007 │ [96m[Step 03] ✅ PASSED — Continue button visible[0m
+10:22:50 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_login_page_elements_visible_chromium_.webm[0m

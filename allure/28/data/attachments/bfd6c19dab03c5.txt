@@ -1,0 +1,11 @@
+10:22:50 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:22:52 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:22:52 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:22:52 │ [92mINFO    [0m │ TC-LOGIN-008 │ [96m[Step 01] Enter SQL injection payload: ' OR '1'='1'; --[0m
+10:22:52 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:22:52 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+10:22:52 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:22:55 │ [92mINFO    [0m │ TC-LOGIN-008 │ [96m[Step 02] Verify page did not crash (5xx / blank page)[0m
+10:22:55 │ [92mINFO    [0m │ TC-LOGIN-008 │ [96m[Step 02] ✅ PASSED — SQL injection did not crash the application[0m
+10:22:56 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_sql_injection_does_not_crash_chromium_.webm[0m

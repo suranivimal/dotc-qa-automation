@@ -1,0 +1,9 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-011:logger.py:104 [96m[Step 01] Enter password[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Password input'[0m
+INFO     TC-LOGIN-011:logger.py:104 [96m[Step 02] Check if password visibility toggle exists[0m
+INFO     TC-LOGIN-011:logger.py:104 [96m[Step 03] Password visibility toggle not found on this page[0m
+INFO     conftest:conftest.py:195 [96mVideo recorded → reports/videos/test_password_visibility_toggle_chromium_.webm[0m

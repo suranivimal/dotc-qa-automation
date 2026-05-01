@@ -1,0 +1,12 @@
+10:23:16 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:23:18 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:23:18 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:23:18 │ [92mINFO    [0m │ TC-LOGIN-014 │ [96m[Step 01] Enter password with special characters: P@$$w0rd!#%&^*()[0m
+10:23:18 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:23:18 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+10:23:18 │ [92mINFO    [0m │ TC-LOGIN-014 │ [96m[Step 02] Click Continue button[0m
+10:23:18 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:23:18 │ [92mINFO    [0m │ TC-LOGIN-014 │ [96m[Step 03] Verify form submission (may get auth error, that's ok)[0m
+10:23:20 │ [92mINFO    [0m │ TC-LOGIN-014 │ [96m[Step 03] ✅ PASSED — Special characters in password are accepted[0m
+10:23:20 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_special_chars_in_password_chromium_.webm[0m
