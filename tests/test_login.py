@@ -516,42 +516,75 @@ class TestAccessibilityAndSecurity:
     @allure.title("TC-LOGIN-020: No sensitive data in localStorage/sessionStorage")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_no_sensitive_data_in_storage(self, login_page: LoginPage):
+        import json, re
         step = StepLogger("TC-LOGIN-020")
 
         step.info("Login with valid credentials first")
         login_page.login(VALID_EMAIL, VALID_PASSWORD)
         login_page.wait_for_dashboard()
 
-        step.info("Check localStorage for sensitive data after authentication")
+        step.info("Dump all storage keys after authentication")
         local_storage = login_page.page.evaluate("() => JSON.stringify(localStorage)")
         session_storage = login_page.page.evaluate("() => JSON.stringify(sessionStorage)")
 
-        step.info("Verify password is not stored in plain text")
-        assert "password" not in local_storage.lower(), (
-            "Password should not be stored in localStorage"
+        local_data = json.loads(local_storage) if local_storage and local_storage != "{}" else {}
+        session_data = json.loads(session_storage) if session_storage and session_storage != "{}" else {}
+
+        # Log every key so failures are easy to diagnose
+        step.info(f"localStorage keys  : {list(local_data.keys())}")
+        step.info(f"sessionStorage keys: {list(session_data.keys())}")
+        allure.attach(
+            json.dumps(local_data, indent=2),
+            name="localStorage contents",
+            attachment_type=allure.attachment_type.JSON,
         )
-        assert "password" not in session_storage.lower(), (
-            "Password should not be stored in sessionStorage"
+        allure.attach(
+            json.dumps(session_data, indent=2),
+            name="sessionStorage contents",
+            attachment_type=allure.attachment_type.JSON,
         )
 
-        step.info("Verify no raw auth token exposed in storage keys or values")
-        import json
-        local_data = json.loads(local_storage) if local_storage != "{}" else {}
-        session_data = json.loads(session_storage) if session_storage != "{}" else {}
+        # 1. No plaintext password in any key or value
+        assert "password" not in local_storage.lower(), \
+            "Password found in localStorage — must never store credentials in browser storage."
+        assert "password" not in session_storage.lower(), \
+            "Password found in sessionStorage — must never store credentials in browser storage."
 
-        sensitive_keys = {"token", "access_token", "auth_token", "secret", "private_key"}
-        exposed_local = [k for k in local_data if k.lower() in sensitive_keys]
-        exposed_session = [k for k in session_data if k.lower() in sensitive_keys]
+        # 2. No JWT token in any value, regardless of key name.
+        #    JWTs always start with "eyJ" (base64-encoded '{"').
+        JWT_RE = re.compile(r'eyJ[A-Za-z0-9_\-]+\.[A-Za-z0-9_\-]+\.[A-Za-z0-9_\-]*')
+        jwt_in_local = [k for k, v in local_data.items() if isinstance(v, str) and JWT_RE.search(v)]
+        jwt_in_session = [k for k, v in session_data.items() if isinstance(v, str) and JWT_RE.search(v)]
 
-        assert not exposed_local, (
-            f"Sensitive key(s) found in localStorage: {exposed_local}. "
+        assert not jwt_in_local, (
+            f"JWT token found in localStorage under key(s): {jwt_in_local}. "
+            "Storing JWTs in localStorage exposes them to XSS attacks. "
+            "Use HttpOnly cookies instead."
+        )
+        assert not jwt_in_session, (
+            f"JWT token found in sessionStorage under key(s): {jwt_in_session}. "
+            "Storing JWTs in sessionStorage exposes them to XSS attacks. "
+            "Use HttpOnly cookies instead."
+        )
+
+        # 3. Sensitive key names check (belt-and-suspenders for non-JWT tokens)
+        sensitive_key_patterns = re.compile(
+            r'(token|access_token|auth_token|id_token|refresh_token|secret|private_key)',
+            re.IGNORECASE,
+        )
+        bad_local_keys = [k for k in local_data if sensitive_key_patterns.search(k)]
+        bad_session_keys = [k for k in session_data if sensitive_key_patterns.search(k)]
+
+        assert not bad_local_keys, (
+            f"Sensitive key(s) found in localStorage: {bad_local_keys}. "
             "Auth tokens must not be stored in localStorage (XSS risk)."
         )
-        assert not exposed_session, (
-            f"Sensitive key(s) found in sessionStorage: {exposed_session}. "
+        assert not bad_session_keys, (
+            f"Sensitive key(s) found in sessionStorage: {bad_session_keys}. "
             "Auth tokens must not be stored in sessionStorage (XSS risk)."
         )
-        step.passed("No plaintext passwords or raw auth tokens found in browser storage")
+
+        step.passed("No passwords, JWT tokens, or sensitive keys found in browser storage")
 
 
 # ═══════════════════════════════════════════════════════════════════════════
