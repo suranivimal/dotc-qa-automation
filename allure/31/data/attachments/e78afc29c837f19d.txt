@@ -1,0 +1,9 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-012:logger.py:104 [96m[Step 01] Click on email input field[0m
+INFO     TC-LOGIN-012:logger.py:104 [96m[Step 02] Press Tab to move to password field[0m
+INFO     TC-LOGIN-012:logger.py:104 [96m[Step 03] Verify password field is focused[0m
+INFO     TC-LOGIN-012:logger.py:107 [96m[Step 03] ✅ PASSED — Keyboard Tab navigation works correctly[0m
+INFO     conftest:conftest.py:197 [96mVideo recorded → reports/videos/test_keyboard_navigation_tab_support_chromium_.webm[0m

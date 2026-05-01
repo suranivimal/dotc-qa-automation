@@ -1,0 +1,26 @@
+11:02:45 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+11:02:45 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+11:02:48 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+11:02:48 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+11:02:48 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+11:02:48 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+11:02:48 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+11:02:48 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+11:02:48 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+11:02:49 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+11:02:49 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+11:02:49 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+11:02:49 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+11:02:52 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+11:02:52 │ [92mINFO    [0m │ TC-UM-015 │ [96m[Step 01] Searching for nonsense: 'zzzznonexistentuser12345xyz'[0m
+11:02:52 │ [92mINFO    [0m │ user_mgmt_page │ [96mSearching for: 'zzzznonexistentuser12345xyz'[0m
+11:02:52 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Search input'[0m
+11:02:54 │ [92mINFO    [0m │ TC-UM-015 │ [96m[Step 02] Validate no results or no-data message[0m
+11:02:54 │ [92mINFO    [0m │ user_mgmt_page │ [96mVisible table rows: 1[0m
+11:02:54 │ [92mINFO    [0m │ TC-UM-015 │ [96m[Step 03] Validate pagination is hidden when no results found[0m
+11:02:54 │ [93mWARNING [0m │ conftest │ [96mFailure screenshot captured and attached: test_search_no_match[chromium][0m
+11:02:54 │ [92mINFO    [0m │ bug_reporter │ [96mCreating bug report for failed test: test_search_no_match[chromium][0m
+11:02:54 │ [92mINFO    [0m │ bug_reporter │ [96mBug report saved: reports/bugs/BUG_20260501_110254_TC-UM-015.json[0m
+11:02:57 │ [92mINFO    [0m │ bug_reporter │ [96mBug report email sent: Search No Match (TC-UM-015)[0m
+11:02:57 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_search_no_match_chromium_.webm[0m

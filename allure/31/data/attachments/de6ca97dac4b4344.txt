@@ -1,0 +1,24 @@
+INFO     conftest:conftest.py:214 [96mAuthenticating as admin@dotc.com[0m
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     login_page:login_page.py:106 [96mPerforming login with email: admin@dotc.com[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Email input'[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Password input'[0m
+INFO     base_page:base_page.py:71 [96mClicking → Continue button[0m
+INFO     login_page:login_page.py:119 [96mWaiting for dashboard to load…[0m
+INFO     login_page:login_page.py:130 [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+INFO     conftest:conftest.py:219 [96mAuthentication complete — page is ready[0m
+INFO     user_mgmt_page:user_management_page.py:182 [96mNavigating to User Management section[0m
+INFO     base_page:base_page.py:71 [96mClicking → User Management sidebar link[0m
+DEBUG    user_mgmt_page:user_management_page.py:692 Table is visible and loaded
+INFO     user_mgmt_page:user_management_page.py:191 [96mUser Management page loaded successfully[0m
+INFO     TC-UM-015:logger.py:104 [96m[Step 01] Searching for nonsense: 'zzzznonexistentuser12345xyz'[0m
+INFO     user_mgmt_page:user_management_page.py:362 [96mSearching for: 'zzzznonexistentuser12345xyz'[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Search input'[0m
+INFO     TC-UM-015:logger.py:104 [96m[Step 02] Validate no results or no-data message[0m
+DEBUG    user_mgmt_page:user_management_page.py:692 Table is visible and loaded
+INFO     user_mgmt_page:user_management_page.py:233 [96mVisible table rows: 1[0m
+INFO     TC-UM-015:logger.py:104 [96m[Step 03] Validate pagination is hidden when no results found[0m
+INFO     conftest:conftest.py:197 [96mVideo recorded → reports/videos/test_search_no_match_chromium_.webm[0m

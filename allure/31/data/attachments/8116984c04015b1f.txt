@@ -1,0 +1,18 @@
+11:06:51 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+11:06:51 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+11:06:54 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+11:06:54 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+11:06:54 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+11:06:54 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+11:06:54 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+11:06:54 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+11:06:54 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+11:06:55 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+11:06:55 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+11:06:55 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+11:06:55 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+11:06:58 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+11:06:58 │ [92mINFO    [0m │ TC-UM-047 │ [96m[Step 01] Actual subtitle: 'All Status'[0m
+11:06:58 │ [92mINFO    [0m │ TC-UM-047 │ [96m[Step 01] ✅ PASSED — Page subtitle is user-friendly: 'All Status'[0m
+11:06:58 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_page_subtitle_is_user_friendly_chromium_.webm[0m

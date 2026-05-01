@@ -1,0 +1,10 @@
+10:57:48 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:57:51 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:57:51 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:57:51 │ [92mINFO    [0m │ TC-LOGIN-006 │ [96m[Step 01] Leave both fields empty[0m
+10:57:51 │ [92mINFO    [0m │ TC-LOGIN-006 │ [96m[Step 02] Click Continue button[0m
+10:57:51 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:57:51 │ [92mINFO    [0m │ TC-LOGIN-006 │ [96m[Step 03] Check for validation[0m
+10:57:52 │ [92mINFO    [0m │ TC-LOGIN-006 │ [96m[Step 03] ✅ PASSED — Both-empty validation works[0m
+10:57:53 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_both_empty_validation_chromium_.webm[0m
