@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri May 01 09:54:56 UTC 2026","Fri May 01 09:54:57 UTC 2026","1159","tests","Login","Validation","","","TC-LOGIN-005: Empty password → validation error",""
+"passed","Fri May 01 09:54:22 UTC 2026","Fri May 01 09:54:30 UTC 2026","8325","tests","Login","Negative","","","TC-LOGIN-002: Invalid email → error message",""
+"passed","Fri May 01 09:54:14 UTC 2026","Fri May 01 09:54:18 UTC 2026","3565","tests","Login","Positive","","","test_valid_login_redirects_to_dashboard[chromium]",""
+"passed","Fri May 01 09:54:45 UTC 2026","Fri May 01 09:54:51 UTC 2026","6162","tests","Login","Validation","","","TC-LOGIN-004: Empty email → validation error",""
+"passed","Fri May 01 09:54:34 UTC 2026","Fri May 01 09:54:42 UTC 2026","8310","tests","Login","Negative","","","TC-LOGIN-003: Valid email + wrong password → error message",""
