@@ -172,7 +172,7 @@ def context(browser, browser_context_args, request) -> BrowserContext:
 
     ctx.close()  # Video files are flushed and written after this call
 
-    # Move each video to a named file and attach to Allure
+    # Move each video to a named file and store on node for Allure attachment
     os.makedirs(VIDEO_DIR, exist_ok=True)
     for idx, vp in enumerate(video_paths):
         if not os.path.exists(vp):
@@ -188,14 +188,13 @@ def context(browser, browser_context_args, request) -> BrowserContext:
 
         try:
             with open(vp, "rb") as f:
-                allure.attach(
-                    f.read(),
-                    name=f"video_{safe_name}",
-                    attachment_type=allure.attachment_type.WEBM,
-                )
+                video_bytes = f.read()
+            if not hasattr(request.node, "_video_attachments"):
+                request.node._video_attachments = []
+            request.node._video_attachments.append((video_bytes, safe_name))
             log.info(f"Video recorded → {vp}")
         except Exception as exc:
-            log.warning(f"Could not attach video to Allure: {exc}")
+            log.warning(f"Could not read video for Allure: {exc}")
 
     # Remove the now-empty temp subdirectory
     try:
@@ -270,3 +269,14 @@ def pytest_runtest_makereport(item: pytest.Item, call):
         tc_id = _extract_tc_id(item)
         if tc_id:
             reporter.update_result(tc_id, "SKIP")
+
+    elif report.when == "teardown":
+        for video_bytes, safe_name in getattr(item, "_video_attachments", []):
+            try:
+                allure.attach(
+                    video_bytes,
+                    name=f"Video — {safe_name}",
+                    attachment_type=allure.attachment_type.WEBM,
+                )
+            except Exception as exc:
+                log.warning(f"Could not attach video to Allure report: {exc}")
