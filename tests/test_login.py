@@ -500,18 +500,24 @@ class TestAccessibilityAndSecurity:
     def test_page_meta_description(self, login_page: LoginPage):
         step = StepLogger("TC-LOGIN-019")
 
-        step.info("Check for meta description tag")
+        step.info("Check for meta description tag in <head>")
+        # meta tags are never 'visible' — use count() to check existence
         meta_description = login_page.page.locator('meta[name="description"]')
 
-        step.info("Verify meta description exists and has content")
-        if meta_description.is_visible():
-            content = meta_description.get_attribute("content")
-            step.info(f"Meta description found: {content}")
-            assert content and len(content) > 0, "Meta description is empty"
-            step.passed("Page meta description is present and has content")
-        else:
-            step.info("Meta description not found (informational)")
-            step.passed("Meta description check completed")
+        assert meta_description.count() > 0, (
+            "Meta description tag is missing. "
+            "A <meta name='description' content='...'> tag should be present in <head> "
+            "for SEO and accessibility."
+        )
+
+        content = meta_description.get_attribute("content")
+        step.info(f"Meta description found: {content}")
+
+        assert content and len(content.strip()) > 0, (
+            "Meta description tag exists but content is empty. "
+            "Add a meaningful description in the content attribute."
+        )
+        step.passed(f"Page meta description is present: '{content}'")
 
     @allure.title("TC-LOGIN-020: No sensitive data in localStorage/sessionStorage")
     @allure.severity(allure.severity_level.CRITICAL)
