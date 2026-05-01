@@ -79,7 +79,7 @@ pytest -m edge_case
 | ---------------- | -------------------- | -------------------------- |
 | `DOTC_BASE_URL`  | `https://admin-dotc.alianhub.com` | Application base URL |
 | `DOTC_EMAIL`     | `admin@dotc.com`     | Valid login email          |
-| `DOTC_PASSWORD`  | `Abc@223133`         | Valid login password       |
+| `DOTC_PASSWORD`  | *(set via .env)*     | Valid login password       |
 | `HEADLESS`       | `true`               | Run browser headless       |
 | `SLOW_MO`        | `0`                  | Slow-motion delay (ms)     |
 

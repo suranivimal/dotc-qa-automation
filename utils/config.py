@@ -20,7 +20,7 @@ USER_MANAGEMENT_URL = f"{BASE_URL}/user-management"
 # ─── Credentials ────────────────────────────────────────────────────────────
 # Override via env vars in CI (GitHub Actions secrets, etc.)
 VALID_EMAIL = os.getenv("DOTC_EMAIL", "admin@dotc.com")
-VALID_PASSWORD = os.getenv("DOTC_PASSWORD", "Abc@223133")
+VALID_PASSWORD = os.getenv("DOTC_PASSWORD", "")
 
 INVALID_EMAIL = "wrong@example.com"
 INVALID_PASSWORD = "WrongPass!999"
