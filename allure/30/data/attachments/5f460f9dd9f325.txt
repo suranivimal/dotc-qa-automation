@@ -1,0 +1,14 @@
+10:37:59 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:38:02 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:38:02 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:38:02 │ [92mINFO    [0m │ TC-LOGIN-010 │ [96m[Step 01] Enter invalid email format[0m
+10:38:02 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:38:02 │ [92mINFO    [0m │ TC-LOGIN-010 │ [96m[Step 02] Click Continue to trigger validation[0m
+10:38:02 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:38:02 │ [92mINFO    [0m │ TC-LOGIN-010 │ [96m[Step 03] Verify validation error message appears for invalid email format[0m
+10:38:09 │ [93mWARNING [0m │ conftest │ [96mFailure screenshot captured and attached: test_email_format_validation_realtime[chromium][0m
+10:38:09 │ [92mINFO    [0m │ bug_reporter │ [96mCreating bug report for failed test: test_email_format_validation_realtime[chromium][0m
+10:38:09 │ [92mINFO    [0m │ bug_reporter │ [96mBug report saved: reports/bugs/BUG_20260501_103809_TC-LOGIN-010.json[0m
+10:38:10 │ [92mINFO    [0m │ bug_reporter │ [96mBug report email sent: Email Format Validation Realtime (TC-LOGIN-010)[0m
+10:38:11 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_email_format_validation_realtime_chromium_.webm[0m

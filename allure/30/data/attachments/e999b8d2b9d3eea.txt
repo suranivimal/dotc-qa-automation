@@ -1,0 +1,21 @@
+10:46:46 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+10:46:46 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:46:48 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:46:49 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:46:49 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+10:46:49 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:46:49 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+10:46:49 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:46:49 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+10:46:50 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+10:46:50 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+10:46:50 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+10:46:50 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+10:46:53 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+10:46:53 │ [92mINFO    [0m │ TC-UM-049 │ [96m[Step 01] Setting viewport to 1280×800[0m
+10:46:54 │ [92mINFO    [0m │ TC-UM-049 │ [96m[Step 02] All 3 filter elements within bounds at 1280px ✓[0m
+10:46:54 │ [92mINFO    [0m │ TC-UM-049 │ [96m[Step 03] Setting viewport to 1024×768[0m
+10:46:54 │ [92mINFO    [0m │ TC-UM-049 │ [96m[Step 04] All 3 filter elements within bounds at 1024px ✓[0m
+10:46:54 │ [92mINFO    [0m │ TC-UM-049 │ [96m[Step 04] ✅ PASSED — Filter section is properly aligned and responsive at 1280px and 1024px[0m
+10:46:54 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_filter_section_responsive_layout_chromium_.webm[0m

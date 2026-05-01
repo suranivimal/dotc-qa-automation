@@ -1,0 +1,23 @@
+10:41:45 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+10:41:45 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:41:47 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:41:47 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:41:47 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+10:41:47 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:41:47 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+10:41:47 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:41:47 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+10:41:48 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+10:41:48 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+10:41:48 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+10:41:48 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+10:41:49 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+10:41:50 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[1] options: ['All Dating Modes', 'Dating Mode Active', 'Dating Mode Inactive'][0m
+10:41:50 │ [92mINFO    [0m │ TC-UM-030 │ [96m[Step 01] Apply Dating Mode filter: 'Dating Mode Active'[0m
+10:41:50 │ [92mINFO    [0m │ user_mgmt_page │ [96mApplying Dating Mode filter: 'Dating Mode Active'[0m
+10:41:50 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[1] → 'Dating Mode Active'[0m
+10:41:51 │ [92mINFO    [0m │ user_mgmt_page │ [96mVisible table rows: 1[0m
+10:41:51 │ [92mINFO    [0m │ user_mgmt_page │ [96mParsed 0 user rows[0m
+10:41:51 │ [92mINFO    [0m │ TC-UM-030 │ [96m[Step 01] ✅ PASSED — Dating Mode='Active' filter returned 1 valid row(s)[0m
+10:41:52 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_dating_mode_filter_active_chromium_.webm[0m

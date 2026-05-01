@@ -1,0 +1,16 @@
+10:37:01 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:37:03 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:37:03 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:37:03 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 01] Enter invalid email[0m
+10:37:03 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:37:03 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 02] Enter valid password[0m
+10:37:03 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+10:37:03 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 03] Click Continue button[0m
+10:37:03 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:37:03 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 04] Validate error message is shown[0m
+10:37:11 │ [93mWARNING [0m │ conftest │ [96mFailure screenshot captured and attached: test_invalid_email_shows_error[chromium][0m
+10:37:11 │ [92mINFO    [0m │ bug_reporter │ [96mCreating bug report for failed test: test_invalid_email_shows_error[chromium][0m
+10:37:11 │ [92mINFO    [0m │ bug_reporter │ [96mBug report saved: reports/bugs/BUG_20260501_103711_TC-LOGIN-002.json[0m
+10:37:14 │ [92mINFO    [0m │ bug_reporter │ [96mBug report email sent: Invalid Email Shows Error (TC-LOGIN-002)[0m
+10:37:14 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_invalid_email_shows_error_chromium_.webm[0m

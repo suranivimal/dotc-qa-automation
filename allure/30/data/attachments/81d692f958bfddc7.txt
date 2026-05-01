@@ -1,0 +1,21 @@
+10:43:41 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+10:43:41 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:43:44 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:43:44 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:43:44 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+10:43:44 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:43:44 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+10:43:44 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:43:44 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+10:43:46 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+10:43:46 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+10:43:46 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+10:43:46 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+10:43:48 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+10:43:48 │ [92mINFO    [0m │ user_mgmt_page │ [96mParsed 10 user rows[0m
+10:43:48 │ [92mINFO    [0m │ TC-UM-040 │ [96m[Step 01] List page URL: 'https://admin-dotc.alianhub.com/users'[0m
+10:43:48 │ [92mINFO    [0m │ user_mgmt_page │ [96mClicking View on row index 0[0m
+10:43:53 │ [92mINFO    [0m │ TC-UM-040 │ [96m[Step 02] Detail page URL: 'https://admin-dotc.alianhub.com/users?userId=407e0b47-5b29-4403-88e2-a7a1222c0611'[0m
+10:43:53 │ [92mINFO    [0m │ TC-UM-040 │ [96m[Step 02] ✅ PASSED — URL changed to: 'https://admin-dotc.alianhub.com/users?userId=407e0b47-5b29-4403-88e2-a7a1222c0611'[0m
+10:43:54 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_detail_page_url_changes_chromium_.webm[0m

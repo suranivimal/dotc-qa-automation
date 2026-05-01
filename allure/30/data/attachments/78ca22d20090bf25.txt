@@ -1,0 +1,11 @@
+10:38:26 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:38:28 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:38:28 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:38:28 │ [92mINFO    [0m │ TC-LOGIN-016 │ [96m[Step 01] Enter very long email (112 chars)[0m
+10:38:28 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:38:28 │ [92mINFO    [0m │ TC-LOGIN-016 │ [96m[Step 02] Click Continue button[0m
+10:38:28 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+10:38:29 │ [92mINFO    [0m │ TC-LOGIN-016 │ [96m[Step 03] Verify page handled long email without crash[0m
+10:38:36 │ [92mINFO    [0m │ TC-LOGIN-016 │ [96m[Step 03] ✅ PASSED — Very long email handled gracefully — no crash, no accidental login[0m
+10:38:38 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_very_long_email_chromium_.webm[0m
