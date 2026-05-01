@@ -1,0 +1,9 @@
+09:57:28 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:57:30 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:57:30 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:57:30 │ [92mINFO    [0m │ TC-LOGIN-019 │ [96m[Step 01] Check for meta description tag[0m
+09:57:30 │ [92mINFO    [0m │ TC-LOGIN-019 │ [96m[Step 02] Verify meta description exists and has content[0m
+09:57:30 │ [92mINFO    [0m │ TC-LOGIN-019 │ [96m[Step 03] Meta description not found (informational)[0m
+09:57:30 │ [92mINFO    [0m │ TC-LOGIN-019 │ [96m[Step 03] ✅ PASSED — Meta description check completed[0m
+09:57:30 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_page_meta_description_chromium_.webm[0m

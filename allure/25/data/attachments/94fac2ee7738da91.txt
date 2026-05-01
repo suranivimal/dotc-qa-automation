@@ -1,0 +1,11 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-016:logger.py:104 [96m[Step 01] Enter very long email (112 chars)[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Email input'[0m
+INFO     TC-LOGIN-016:logger.py:104 [96m[Step 02] Click Continue button[0m
+INFO     base_page:base_page.py:71 [96mClicking → Continue button[0m
+INFO     TC-LOGIN-016:logger.py:104 [96m[Step 03] Verify page handled long email (no crash)[0m
+INFO     TC-LOGIN-016:logger.py:107 [96m[Step 03] ✅ PASSED — Very long email address is accepted[0m
+INFO     conftest:conftest.py:195 [96mVideo recorded → reports/videos/test_very_long_email_chromium_.webm[0m

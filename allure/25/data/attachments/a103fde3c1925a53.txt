@@ -1,0 +1,12 @@
+09:57:03 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:57:05 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:57:06 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:57:06 │ [92mINFO    [0m │ TC-LOGIN-013 │ [96m[Step 01] Click Continue with empty fields to trigger validation[0m
+09:57:06 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:57:06 │ [92mINFO    [0m │ TC-LOGIN-013 │ [96m[Step 02] Verify validation errors are shown on page[0m
+09:57:06 │ [92mINFO    [0m │ TC-LOGIN-013 │ [96m[Step 03] Enter email to clear validation[0m
+09:57:06 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:57:06 │ [92mINFO    [0m │ TC-LOGIN-013 │ [96m[Step 04] Check if email validation error is cleared[0m
+09:57:07 │ [92mINFO    [0m │ TC-LOGIN-013 │ [96m[Step 04] ✅ PASSED — Validation errors clear when user provides input[0m
+09:57:07 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_validation_clears_on_input_chromium_.webm[0m
