@@ -77,6 +77,44 @@ def _extract_failure_summary(raw_message: str) -> str:
     return lines[0][:200] if lines else "An unexpected error occurred during the test."
 
 
+def _extract_actual_expected(failure_summary: str) -> tuple[str, str]:
+    """
+    Parse a human-readable assertion message into (actual_result, expected_result).
+
+    Handles common patterns written in the test assertions:
+      • "X should be 'Y', got 'Z'"        → actual: Z,  expected: Y
+      • "X, got 'Z'"                       → actual: Z,  expected: the part before 'got'
+      • "X should NOT ..."                 → actual: the condition occurred, expected: it should not
+      • "X must not ..."                   → same
+      • "Expected X rows / X message ..."  → actual: condition not met, expected: X
+      • Fallback                           → actual: full message, expected: generic
+    """
+    msg = failure_summary.strip()
+
+    # Pattern: "..., got 'Z'" or "..., got Z"
+    got_match = re.search(r",\s*got\s+['\"]?(.+?)['\"]?\s*$", msg, re.IGNORECASE)
+    if got_match:
+        actual = f"Got: {got_match.group(1).strip()}"
+        expected = msg[:got_match.start()].strip().rstrip('.,')
+        return actual, expected
+
+    # Pattern: "should NOT ..." or "must not ..."
+    if re.search(r"\bshould\s+not\b|\bmust\s+not\b", msg, re.IGNORECASE):
+        return f"The condition described above occurred: {msg}", \
+               "This condition should NOT occur — see message above"
+
+    # Pattern starts with "Expected ..."
+    if msg.lower().startswith("expected"):
+        return "The actual result did not match what was expected", msg
+
+    # Pattern: "X found in Y" — something unwanted was present
+    if re.search(r"\bfound\b", msg, re.IGNORECASE):
+        return msg, "The item described above should NOT have been found"
+
+    # Fallback
+    return msg, "The test should complete without the above error"
+
+
 def create_bug_report(
     tc_id: str,
     test_name: str,
@@ -88,6 +126,7 @@ def create_bug_report(
 
     readable_name = _readable_test_name(test_name)
     failure_summary = _extract_failure_summary(failure_message)
+    actual_result, expected_result = _extract_actual_expected(failure_summary)
 
     label = tc_id if tc_id != "UNKNOWN" else readable_name
 
@@ -97,6 +136,8 @@ def create_bug_report(
         "test_name": test_name,
         "readable_name": readable_name,
         "failure_summary": failure_summary,
+        "actual_result": actual_result,
+        "expected_result": expected_result,
         "raw_failure": failure_message,
         "screenshot_path": screenshot_path,
         "video_path": video_path,
@@ -118,6 +159,8 @@ def _build_html_email(bug_report: dict, has_screenshot: bool) -> str:
     tc_id = bug_report["tc_id"]
     readable_name = bug_report["readable_name"]
     failure_summary = bug_report["failure_summary"]
+    actual_result = bug_report.get("actual_result", failure_summary)
+    expected_result = bug_report.get("expected_result", "The test should complete without errors")
     created_at = bug_report["created_at"]
 
     try:
@@ -166,12 +209,22 @@ def _build_html_email(bug_report: dict, has_screenshot: bool) -> str:
         <!-- Divider -->
         <tr><td style="padding:0 32px;"><hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0 0;"></td></tr>
 
-        <!-- What went wrong -->
+        <!-- Actual Result -->
         <tr>
           <td style="padding:20px 32px 0;">
-            <p style="margin:0 0 8px;color:#94a3b8;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">What Went Wrong</p>
+            <p style="margin:0 0 8px;color:#94a3b8;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Actual Result</p>
             <div style="background:#fef2f2;border-left:4px solid #dc2626;padding:14px 16px;border-radius:0 4px 4px 0;">
-              <p style="margin:0;color:#991b1b;font-size:14px;line-height:1.6;">{failure_summary}</p>
+              <p style="margin:0;color:#991b1b;font-size:14px;line-height:1.6;">{actual_result}</p>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Expected Result -->
+        <tr>
+          <td style="padding:20px 32px 0;">
+            <p style="margin:0 0 8px;color:#94a3b8;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Expected Result</p>
+            <div style="background:#f0fdf4;border-left:4px solid #16a34a;padding:14px 16px;border-radius:0 4px 4px 0;">
+              <p style="margin:0;color:#166534;font-size:14px;line-height:1.6;">{expected_result}</p>
             </div>
           </td>
         </tr>
