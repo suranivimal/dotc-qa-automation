@@ -31,8 +31,7 @@ dotc-qa-automation/
 │
 ├── .github/
 │   ├── workflows/
-│   │   ├── qa-ci.yml            # CI workflow — runs on push/PR, manual dispatch
-│   │   └── qa-nightly.yml       # Nightly full regression at 02:00 UTC
+│   │   └── qa-ci.yml            # CI workflow — runs on push/PR, manual dispatch
 │   └── SECRETS.md               # Guide for configuring GitHub Actions secrets
 │
 └── reports/                     # Auto-generated (not committed)
@@ -172,7 +171,7 @@ EMAIL_NOTIFICATIONS_ENABLED=true
 
 ## CI/CD (GitHub Actions)
 
-Two workflows are configured under `.github/workflows/`:
+One workflow is configured under `.github/workflows/`:
 
 ### `qa-ci.yml` — On push / PR / manual
 - Runs on every push to `main`, `master`, `develop` and on pull requests
@@ -180,11 +179,6 @@ Two workflows are configured under `.github/workflows/`:
 - Uploads Allure report, screenshots, videos, Excel report, and logs as artifacts
 - Posts a test summary comment on pull requests
 - Deploys Allure report to GitHub Pages on `main`
-
-### `qa-nightly.yml` — Every night at 02:00 UTC
-- Runs the full regression suite nightly
-- Creates a GitHub issue automatically on failure
-- Uploads artifacts with 60-day retention
 
 **Required secrets** — see `.github/SECRETS.md` for setup instructions:
 
