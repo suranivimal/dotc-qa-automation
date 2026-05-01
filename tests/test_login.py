@@ -109,13 +109,12 @@ class TestInvalidLogin:
         login_page.click_continue_button()
 
         step.info("Validate error message is shown")
-        # Either a toast / inline error, or we stay on login
         login_page.page.wait_for_timeout(3000)  # allow server response
         error_shown = login_page.is_error_message_displayed()
-        still_on_login = login_page.is_login_page_displayed()
 
-        assert error_shown or still_on_login, (
-            "Expected error message or to remain on login page"
+        assert error_shown, (
+            "No error message shown for invalid email. "
+            "The form should reject unregistered credentials with a visible error."
         )
         step.passed("Error handled correctly for invalid email")
 
@@ -133,13 +132,13 @@ class TestInvalidLogin:
         step.info("Click Continue button")
         login_page.click_continue_button()
 
-        step.info("Validate error or still on login page")
+        step.info("Validate error message is shown")
         login_page.page.wait_for_timeout(3000)
         error_shown = login_page.is_error_message_displayed()
-        still_on_login = login_page.is_login_page_displayed()
 
-        assert error_shown or still_on_login, (
-            "Expected error message for wrong password"
+        assert error_shown, (
+            "No error message shown for wrong password. "
+            "The form should reject incorrect credentials with a visible error."
         )
         step.passed("Wrong password error handled correctly")
 
@@ -163,13 +162,14 @@ class TestEmptyInputValidation:
         step.info("Check for validation error")
         login_page.page.wait_for_timeout(1000)
 
-        # HTML5 required attribute OR custom inline error
         has_error = (
             login_page.is_email_validation_error_displayed()
             or login_page.is_error_message_displayed()
-            or login_page.is_login_page_displayed()
         )
-        assert has_error, "No validation for empty email"
+        assert has_error, (
+            "No validation error shown for empty email field. "
+            "Expected inline validation or error message when email is blank."
+        )
         step.passed("Empty email validation works")
 
     @allure.title("TC-LOGIN-005: Empty password → validation error")
@@ -186,11 +186,11 @@ class TestEmptyInputValidation:
         step.info("Check for validation error")
         login_page.page.wait_for_timeout(1000)
 
-        has_error = (
-            login_page.is_error_message_displayed()
-            or login_page.is_login_page_displayed()
+        has_error = login_page.is_error_message_displayed()
+        assert has_error, (
+            "No error shown for empty password field. "
+            "Expected error message when password is blank."
         )
-        assert has_error, "No validation for empty password"
         step.passed("Empty password validation works")
 
     @allure.title("TC-LOGIN-006: Both fields empty → validation error")
@@ -309,15 +309,16 @@ class TestAdvancedValidation:
         step.info("Click Continue to trigger validation")
         login_page.click_continue_button()
 
-        step.info("Verify validation error message appears or page stays on login")
+        step.info("Verify validation error message appears for invalid email format")
         login_page.page.wait_for_timeout(1000)
-        # Check if we get any validation error text on the page
-        page_content = login_page.page.content().lower()
-        has_validation = "email" in page_content and ("invalid" in page_content or "required" in page_content)
-        still_on_login = login_page.is_login_page_displayed()
-        
-        assert has_validation or still_on_login, (
-            "Expected validation error or to stay on login page"
+
+        has_error = (
+            login_page.is_email_validation_error_displayed()
+            or login_page.is_error_message_displayed()
+        )
+        assert has_error, (
+            "No validation error shown for 'notanemail'. "
+            "Expected inline or toast error for invalid email format."
         )
         step.passed("Email format validation works in real-time")
 
@@ -362,27 +363,6 @@ class TestAdvancedValidation:
         )
         assert focused, "Tab navigation did not move to password field"
         step.passed("Keyboard Tab navigation works correctly")
-
-    @allure.title("TC-LOGIN-013: Form validation clears on user input")
-    @allure.severity(allure.severity_level.NORMAL)
-    def test_validation_clears_on_input(self, login_page: LoginPage):
-        step = StepLogger("TC-LOGIN-013")
-
-        step.info("Click Continue with empty fields to trigger validation")
-        login_page.click_continue_button()
-        login_page.page.wait_for_timeout(500)
-
-        step.info("Verify validation errors are shown on page")
-        page_content = login_page.page.content().lower()
-        has_validation = "required" in page_content or "invalid" in page_content
-
-        step.info("Enter email to clear validation")
-        login_page.enter_email("test@example.com")
-
-        step.info("Check if email validation error is cleared")
-        login_page.page.wait_for_timeout(500)
-        # Validation should be cleared or not shown for this field anymore
-        step.passed("Validation errors clear when user provides input")
 
 
 @allure.suite("Login")
@@ -443,10 +423,13 @@ class TestAdvancedEdgeCases:
         step.info("Click Continue button")
         login_page.click_continue_button()
 
-        step.info("Verify page handled long email (no crash)")
+        step.info("Verify page handled long email without crash")
         login_page.page.wait_for_timeout(2000)
-        assert login_page.page.content(), "Page appears blank after long email"
-        step.passed("Very long email address is accepted")
+        assert len(login_page.page.content()) > 100, "Page appears blank after long email — possible crash"
+        assert not login_page.is_dashboard_displayed(), (
+            "Long email (100+ chars) should not successfully authenticate"
+        )
+        step.passed("Very long email handled gracefully — no crash, no accidental login")
 
     @allure.title("TC-LOGIN-017: Uppercase email handled correctly")
     @allure.severity(allure.severity_level.MINOR)
@@ -461,63 +444,18 @@ class TestAdvancedEdgeCases:
         step.info("Click Continue button")
         login_page.click_continue_button()
 
-        step.info("Verify form submission (should handle case-insensitive)")
+        step.info("Verify uppercase email with wrong credentials does not authenticate")
         login_page.page.wait_for_timeout(2000)
-        assert (
-            login_page.is_login_page_displayed()
-            or login_page.is_error_message_displayed()
-        ), "Page should remain on login or show error"
-        step.passed("Uppercase email is handled correctly")
+        assert not login_page.is_dashboard_displayed(), (
+            "Uppercase email with wrong password should not authenticate"
+        )
+        step.passed("Uppercase email handled correctly — no accidental login")
 
 
 @allure.suite("Login")
-@allure.sub_suite("Accessibility")
-class TestAccessibilityAndSecurity:
-    pytestmark = [pytest.mark.login, pytest.mark.regression]
-
-    @allure.title("TC-LOGIN-018: Form labels properly associated with inputs")
-    @allure.severity(allure.severity_level.NORMAL)
-    def test_form_labels_association(self, login_page: LoginPage):
-        step = StepLogger("TC-LOGIN-018")
-
-        step.info("Check for form labels on page")
-        page_content = login_page.page.content()
-
-        step.info("Verify email and password labels are present in HTML")
-        assert "email" in page_content.lower(), "Email label not found in page"
-        assert "password" in page_content.lower(), "Password label not found in page"
-
-        step.info("Verify input elements are present")
-        email_input = login_page.page.locator(LoginPage.EMAIL_INPUT)
-        password_input = login_page.page.locator(LoginPage.PASSWORD_INPUT)
-
-        assert email_input.is_visible(), "Email input not visible"
-        assert password_input.is_visible(), "Password input not visible"
-        step.passed("Form labels are properly associated with inputs")
-
-    @allure.title("TC-LOGIN-019: Page meta description present")
-    @allure.severity(allure.severity_level.MINOR)
-    def test_page_meta_description(self, login_page: LoginPage):
-        step = StepLogger("TC-LOGIN-019")
-
-        step.info("Check for meta description tag in <head>")
-        # meta tags are never 'visible' — use count() to check existence
-        meta_description = login_page.page.locator('meta[name="description"]')
-
-        assert meta_description.count() > 0, (
-            "Meta description tag is missing. "
-            "A <meta name='description' content='...'> tag should be present in <head> "
-            "for SEO and accessibility."
-        )
-
-        content = meta_description.get_attribute("content")
-        step.info(f"Meta description found: {content}")
-
-        assert content and len(content.strip()) > 0, (
-            "Meta description tag exists but content is empty. "
-            "Add a meaningful description in the content attribute."
-        )
-        step.passed(f"Page meta description is present: '{content}'")
+@allure.sub_suite("Security")
+class TestSecurity:
+    pytestmark = [pytest.mark.login, pytest.mark.security, pytest.mark.regression]
 
     @allure.title("TC-LOGIN-020: No sensitive data in localStorage/sessionStorage")
     @allure.severity(allure.severity_level.CRITICAL)

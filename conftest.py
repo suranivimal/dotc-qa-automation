@@ -36,7 +36,7 @@ log = get_logger("conftest")
 VIDEO_DIR = "reports/videos"
 
 _FUNC_TC_MAP: dict[str, str] = {
-    # Login
+    # Login — Positive
     "test_valid_login_redirects_to_dashboard": "TC-LOGIN-001",
     "test_invalid_email_shows_error":          "TC-LOGIN-002",
     "test_wrong_password_shows_error":         "TC-LOGIN-003",
@@ -44,71 +44,73 @@ _FUNC_TC_MAP: dict[str, str] = {
     "test_empty_password_validation":          "TC-LOGIN-005",
     "test_both_empty_validation":              "TC-LOGIN-006",
     "test_login_page_elements_visible":        "TC-LOGIN-007",
+    # Login — Security
     "test_sql_injection_does_not_crash":       "TC-LOGIN-008",
-    "test_xss_attempt_sanitized":             "TC-LOGIN-009",
-    # Advanced Login Tests (TC-LOGIN-010 to TC-LOGIN-020)
+    "test_xss_attempt_sanitized":              "TC-LOGIN-009",
+    # Login — Advanced validation
     "test_email_format_validation_realtime":   "TC-LOGIN-010",
     "test_password_visibility_toggle":         "TC-LOGIN-011",
     "test_keyboard_navigation_tab_support":    "TC-LOGIN-012",
-    "test_validation_clears_on_input":         "TC-LOGIN-013",
     "test_special_chars_in_password":          "TC-LOGIN-014",
     "test_email_whitespace_trimming":          "TC-LOGIN-015",
     "test_very_long_email":                    "TC-LOGIN-016",
     "test_uppercase_email":                    "TC-LOGIN-017",
-    "test_form_labels_association":            "TC-LOGIN-018",
-    "test_page_meta_description":              "TC-LOGIN-019",
     "test_no_sensitive_data_in_storage":       "TC-LOGIN-020",
-    # User Management
+    # Login — Session
+    "test_login_via_enter_key":                "TC-LOGIN-021",
+    "test_session_persists_on_refresh":        "TC-LOGIN-022",
+    "test_logout_redirects_to_login":          "TC-LOGIN-023",
+    # User Management — Navigation & Table
     "test_navigate_to_user_management":        "TC-UM-001",
     "test_page_heading_visible":               "TC-UM-002",
     "test_table_is_visible":                   "TC-UM-003",
     "test_table_columns":                      "TC-UM-004",
     "test_at_least_one_row":                   "TC-UM-005",
-    "test_row_data_non_empty":                 "TC-UM-006",
-    "test_status_filter":                      "TC-UM-007",
-    "test_location_filter":                    "TC-UM-008",
-    "test_dating_mode_filter":                 "TC-UM-009",
+    "test_table_data_completeness":            "TC-UM-033",
+    # User Management — Filters
     "test_combined_filters":                   "TC-UM-010",
     "test_no_result_filter":                   "TC-UM-011",
-    "test_reset_filters":                      "TC-UM-012",
+    "test_status_filter_active":               "TC-UM-023",
+    "test_status_filter_suspended":            "TC-UM-025",
+    "test_location_filter_all_options":        "TC-UM-026",
+    "test_dating_mode_filter_all_options":     "TC-UM-027",
+    "test_clear_all_button":                   "TC-UM-028",
+    "test_status_filter_all":                  "TC-UM-029",
+    "test_dating_mode_filter_active":          "TC-UM-030",
+    "test_dating_mode_filter_inactive":        "TC-UM-031",
+    # User Management — Search
     "test_search_by_name":                     "TC-UM-013",
     "test_search_by_email":                    "TC-UM-014",
     "test_search_no_match":                    "TC-UM-015",
     "test_clear_search":                       "TC-UM-016",
-    "test_view_user_detail":                   "TC-UM-017",
+    "test_search_by_id":                       "TC-UM-032",
+    # User Management — Pagination
+    "test_pagination_visible":                 "TC-UM-034",
+    "test_pagination_next_page":               "TC-UM-035",
+    "test_pagination_prev_page":               "TC-UM-036",
+    # User Management — User Detail
     "test_user_detail_fields":                 "TC-UM-018",
-    "test_back_to_list":                       "TC-UM-019",
+    "test_detail_name_matches_list":           "TC-UM-037",
+    "test_detail_email_matches_list":          "TC-UM-038",
+    "test_detail_status_matches_list":         "TC-UM-039",
+    "test_detail_page_url_changes":            "TC-UM-040",
+    "test_admin_actions_visible_on_detail":    "TC-UM-041",
+    "test_back_from_detail_shows_list":        "TC-UM-042",
+    "test_different_users_show_different_detail": "TC-UM-043",
+    # User Management — Edge Cases
     "test_special_chars_search":               "TC-UM-020",
     "test_long_search_string":                 "TC-UM-021",
     "test_rapid_filter_switching":             "TC-UM-022",
-    # TC-UM-023 to TC-UM-028 — extended filter tests (already in test file)
-    "test_status_filter_active":              "TC-UM-023",
-    "test_status_filter_deactive":            "TC-UM-024",
-    "test_status_filter_suspended":           "TC-UM-025",
-    "test_location_filter_all_options":       "TC-UM-026",
-    "test_dating_mode_filter_all_options":    "TC-UM-027",
-    "test_clear_all_button":                  "TC-UM-028",
-    # TC-UM-029 to TC-UM-036 — new ScoutQA scenario coverage
-    "test_status_filter_all":                 "TC-UM-029",
-    "test_dating_mode_filter_active":         "TC-UM-030",
-    "test_dating_mode_filter_inactive":       "TC-UM-031",
-    "test_search_by_id":                      "TC-UM-032",
-    "test_table_data_completeness":           "TC-UM-033",
-    "test_pagination_visible":                "TC-UM-034",
-    "test_pagination_next_page":              "TC-UM-035",
-    "test_pagination_prev_page":              "TC-UM-036",
-    # TC-LOGIN-021 to TC-LOGIN-023 — session & logout tests
-    "test_login_via_enter_key":              "TC-LOGIN-021",
-    "test_session_persists_on_refresh":      "TC-LOGIN-022",
-    "test_logout_redirects_to_login":        "TC-LOGIN-023",
-    # TC-UM-037 to TC-UM-043 — extended user detail tests
-    "test_detail_name_matches_list":         "TC-UM-037",
-    "test_detail_email_matches_list":        "TC-UM-038",
-    "test_detail_status_matches_list":       "TC-UM-039",
-    "test_detail_page_url_changes":          "TC-UM-040",
-    "test_admin_actions_visible_on_detail":  "TC-UM-041",
-    "test_back_from_detail_shows_list":      "TC-UM-042",
-    "test_different_users_show_different_detail": "TC-UM-043",
+    # User Management — Bug Regression
+    "test_filter_dropdown_cursor_is_pointer":                  "TC-UM-044",
+    "test_no_count_summary_when_filter_has_no_results":        "TC-UM-045",
+    "test_location_filter_placeholder_text":                   "TC-UM-046",
+    "test_page_subtitle_is_user_friendly":                     "TC-UM-047",
+    "test_clear_all_not_shown_for_text_search":                "TC-UM-048",
+    "test_filter_section_responsive_layout":                   "TC-UM-049",
+    "test_no_server_error_on_pagination":                      "TC-UM-050",
+    "test_location_filter_with_full_address_and_abbreviations": "TC-UM-051",
+    "test_dating_mode_filter_option_labels":                   "TC-UM-052",
 }
 
 
