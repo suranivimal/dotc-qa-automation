@@ -262,7 +262,7 @@ def pytest_runtest_makereport(item: pytest.Item, call):
                     log.warning(f"Could not capture failure screenshot: {exc}")
 
             # Create bug report
-            tc_id = _extract_tc_id(item) or "UNKNOWN"
+            tc_id = tc_id or "UNKNOWN"
             failure_message = str(call.excinfo.value) if call.excinfo else "Unknown failure"
             report_bug_on_failure(tc_id, item.name, failure_message, screenshot_path)
 

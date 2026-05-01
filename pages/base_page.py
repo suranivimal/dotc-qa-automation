@@ -16,7 +16,7 @@ from datetime import datetime
 from typing import Optional
 
 import allure
-from playwright.sync_api import Page, Locator, expect, TimeoutError as PwTimeout
+from playwright.sync_api import Page, Locator, TimeoutError as PwTimeout
 
 from utils.config import (
     DEFAULT_TIMEOUT,
@@ -51,9 +51,6 @@ class BasePage:
     def get_current_url(self) -> str:
         return self.page.url
 
-    def reload_page(self) -> None:
-        self.page.reload(wait_until="domcontentloaded")
-
     # ── Explicit Waits ──────────────────────────────────────────────────
     def wait_for_element_visible(
         self, selector: str, *, timeout: int = DEFAULT_TIMEOUT
@@ -67,16 +64,6 @@ class BasePage:
         self, selector: str, *, timeout: int = DEFAULT_TIMEOUT
     ) -> None:
         self.page.locator(selector).wait_for(state="hidden", timeout=timeout)
-
-    def wait_for_url_contains(
-        self, fragment: str, *, timeout: int = NAVIGATION_TIMEOUT
-    ) -> None:
-        """Block until the URL contains *fragment*."""
-        log.debug(f"Waiting for URL to contain '{fragment}'")
-        self.page.wait_for_url(f"**{fragment}**", timeout=timeout)
-
-    def wait_for_network_idle(self, *, timeout: int = NAVIGATION_TIMEOUT) -> None:
-        self.page.wait_for_load_state("networkidle", timeout=timeout)
 
     # ── Safe Interaction Helpers ────────────────────────────────────────
     def safe_click(self, selector: str, *, description: str = "") -> None:
@@ -98,16 +85,6 @@ class BasePage:
         field = self.page.locator(selector)
         field.click(click_count=3)
         field.fill(value)
-
-    def safe_select_option(
-        self, selector: str, *, value: str = "", label: str = "", description: str = ""
-    ) -> None:
-        desc = description or selector
-        log.info(f"Selecting option in '{desc}' — value='{value}' label='{label}'")
-        if value:
-            self.page.locator(selector).select_option(value=value)
-        elif label:
-            self.page.locator(selector).select_option(label=label)
 
     # ── Text Helpers ────────────────────────────────────────────────────
     def get_text(self, selector: str, *, timeout: int = DEFAULT_TIMEOUT) -> str:
