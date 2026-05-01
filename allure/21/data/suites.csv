@@ -1,0 +1,8 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri May 01 09:07:30 UTC 2026","Fri May 01 09:07:33 UTC 2026","2710","tests","Login","Session","","","TC-LOGIN-022: Session persists after page refresh",""
+"passed","Fri May 01 09:07:36 UTC 2026","Fri May 01 09:07:45 UTC 2026","8879","tests","Login","Session","","","TC-LOGIN-023: Logout redirects back to login page",""
+"passed","Fri May 01 09:07:58 UTC 2026","Fri May 01 09:07:58 UTC 2026","28","tests","User Management","Navigation","","","TC-UM-002: Page heading is visible",""
+"passed","Fri May 01 09:07:14 UTC 2026","Fri May 01 09:07:18 UTC 2026","3613","tests","Login","Positive","","","test_valid_login_redirects_to_dashboard[chromium]",""
+"passed","Fri May 01 09:07:25 UTC 2026","Fri May 01 09:07:27 UTC 2026","1694","tests","Login","Session","","","TC-LOGIN-021: Login via Enter key on password field",""
+"passed","Fri May 01 09:07:22 UTC 2026","Fri May 01 09:07:22 UTC 2026","44","tests","Login","UI Elements","","","TC-LOGIN-007: Login page elements are visible",""
+"passed","Fri May 01 09:07:49 UTC 2026","Fri May 01 09:07:53 UTC 2026","3620","tests","User Management","Navigation","","","TC-UM-001: Navigate to User Management from sidebar",""
