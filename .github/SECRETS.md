@@ -8,7 +8,7 @@ Go to: **GitHub repo → Settings → Secrets and variables → Actions → New 
 |------------------|------------------------------------|----------------------------------|
 | `DOTC_BASE_URL`  | Admin panel base URL               | `https://admin-dotc.alianhub.com` |
 | `DOTC_EMAIL`     | Admin login email                  | `admin@dotc.com`                 |
-| `DOTC_PASSWORD`  | Admin login password               | `Abc@223133`                     |
+| `DOTC_PASSWORD`  | Admin login password               | `YourStrongPassword`             |
 
 ## Optional (for email bug notifications)
 
