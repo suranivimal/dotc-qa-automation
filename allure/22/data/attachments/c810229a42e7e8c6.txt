@@ -1,0 +1,8 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-020:logger.py:104 [96m[Step 01] Check localStorage for sensitive data[0m
+INFO     TC-LOGIN-020:logger.py:104 [96m[Step 02] Verify no passwords or tokens in storage[0m
+INFO     TC-LOGIN-020:logger.py:107 [96m[Step 02] ✅ PASSED — No sensitive data found in browser storage[0m
+INFO     conftest:conftest.py:195 [96mVideo recorded → reports/videos/test_no_sensitive_data_in_storage_chromium_.webm[0m

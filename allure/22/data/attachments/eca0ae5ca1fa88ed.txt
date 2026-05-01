@@ -1,0 +1,11 @@
+09:17:25 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:17:27 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:17:27 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:17:27 │ [92mINFO    [0m │ TC-LOGIN-010 │ [96m[Step 01] Enter invalid email format[0m
+09:17:27 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:17:27 │ [92mINFO    [0m │ TC-LOGIN-010 │ [96m[Step 02] Click Continue to trigger validation[0m
+09:17:27 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:17:28 │ [92mINFO    [0m │ TC-LOGIN-010 │ [96m[Step 03] Verify validation error message appears or page stays on login[0m
+09:17:29 │ [92mINFO    [0m │ TC-LOGIN-010 │ [96m[Step 03] ✅ PASSED — Email format validation works in real-time[0m
+09:17:29 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_email_format_validation_realtime_chromium_.webm[0m

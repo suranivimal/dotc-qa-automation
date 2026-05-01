@@ -1,0 +1,31 @@
+09:23:49 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+09:23:49 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:23:51 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:23:51 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:23:51 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+09:23:51 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:23:51 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+09:23:51 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:23:51 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+09:23:52 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+09:23:52 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+09:23:52 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+09:23:52 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+09:23:55 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+09:23:55 │ [92mINFO    [0m │ user_mgmt_page │ [96mParsed 10 user rows[0m
+09:23:55 │ [92mINFO    [0m │ TC-UM-043 │ [96m[Step 01] User 1: name='Rp
+
+407e0b47-5b29-4403-88e2-a7a1222c0611' | User 2: name='Unnamed User
+
+5b8a270f-a29a-4d0e-92e4-ed02ff578f47'[0m
+09:23:55 │ [92mINFO    [0m │ TC-UM-043 │ [96m[Step 02] Navigate to first user detail[0m
+09:23:55 │ [92mINFO    [0m │ user_mgmt_page │ [96mClicking View on row index 0[0m
+09:23:58 │ [92mINFO    [0m │ TC-UM-043 │ [96m[Step 03] Detail 1 — name: 'RP'[0m
+09:23:58 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating back to user list[0m
+09:23:58 │ [92mINFO    [0m │ base_page │ [96mClicking → Back button[0m
+09:23:58 │ [92mINFO    [0m │ TC-UM-043 │ [96m[Step 04] Navigate to second user detail[0m
+09:23:58 │ [92mINFO    [0m │ user_mgmt_page │ [96mClicking View on row index 1[0m
+09:24:01 │ [92mINFO    [0m │ TC-UM-043 │ [96m[Step 05] Detail 2 — name: 'N/A'[0m
+09:24:01 │ [92mINFO    [0m │ TC-UM-043 │ [96m[Step 05] ✅ PASSED — User 1 detail 'RP' ≠ User 2 detail 'N/A'[0m
+09:24:01 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_different_users_show_different_detail_chromium_.webm[0m

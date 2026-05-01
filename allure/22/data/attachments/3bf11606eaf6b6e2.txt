@@ -1,0 +1,9 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-019:logger.py:104 [96m[Step 01] Check for meta description tag[0m
+INFO     TC-LOGIN-019:logger.py:104 [96m[Step 02] Verify meta description exists and has content[0m
+INFO     TC-LOGIN-019:logger.py:104 [96m[Step 03] Meta description not found (informational)[0m
+INFO     TC-LOGIN-019:logger.py:107 [96m[Step 03] ✅ PASSED — Meta description check completed[0m
+INFO     conftest:conftest.py:195 [96mVideo recorded → reports/videos/test_page_meta_description_chromium_.webm[0m

@@ -1,0 +1,26 @@
+09:19:21 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+09:19:21 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:19:23 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:19:23 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:19:23 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+09:19:23 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:19:23 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+09:19:23 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:19:24 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+09:19:25 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+09:19:25 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+09:19:25 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+09:19:25 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+09:19:28 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+09:19:28 │ [92mINFO    [0m │ TC-UM-011 │ [96m[Step 01] Collect available filter options[0m
+09:19:29 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[0] options: ['All Status', 'Active', 'Suspended'][0m
+09:19:29 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[1] options: ['All Dating Modes', 'Dating Mode Active', 'Dating Mode Inactive'][0m
+09:19:29 │ [92mINFO    [0m │ TC-UM-011 │ [96m[Step 02] Apply extreme filters: status='Suspended', location='', mode='Dating Mode Inactive'[0m
+09:19:29 │ [92mINFO    [0m │ user_mgmt_page │ [96mApplying combined filters — status='Suspended', location='', dating_mode='Dating Mode Inactive'[0m
+09:19:29 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[0] → 'Suspended'[0m
+09:19:30 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[1] → 'Dating Mode Inactive'[0m
+09:19:32 │ [92mINFO    [0m │ user_mgmt_page │ [96mVisible table rows: 9[0m
+09:19:32 │ [92mINFO    [0m │ TC-UM-011 │ [96m[Step 03] Rows: 9, No-data shown: False[0m
+09:19:32 │ [92mINFO    [0m │ TC-UM-011 │ [96m[Step 03] ✅ PASSED — Extreme filters matched 9 real user(s) — filter logic is working[0m
+09:19:32 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_no_result_filter_chromium_.webm[0m

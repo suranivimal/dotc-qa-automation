@@ -1,0 +1,13 @@
+09:16:30 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:16:32 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:16:32 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:16:32 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 01] Enter invalid email[0m
+09:16:32 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:16:32 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 02] Enter valid password[0m
+09:16:32 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+09:16:32 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 03] Click Continue button[0m
+09:16:32 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:16:32 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 04] Validate error message is shown[0m
+09:16:40 │ [92mINFO    [0m │ TC-LOGIN-002 │ [96m[Step 04] ✅ PASSED — Error handled correctly for invalid email[0m
+09:16:41 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_invalid_email_shows_error_chromium_.webm[0m
