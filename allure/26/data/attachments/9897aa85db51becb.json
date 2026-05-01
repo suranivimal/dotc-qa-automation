@@ -1,0 +1,5 @@
+{
+  "dotc_admin_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViZTBmZjk0LWYwMzAtNDcxOS04NDdkLTE0NDczMzI2Mjc5YyIsInJvbGUiOiJBRE1JTiIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTc3NzYzMDIwOSwiZXhwIjoxNzc3NjMyMDA5fQ.XWrXTd8FBQTJe7MY8LnRQE-0C8w4xub532gvyn0m9AQ",
+  "dotc_admin_user": "{\"id\":\"ebe0ff94-f030-4719-847d-14473326279c\",\"name\":\"DOTC-development-admin\",\"email\":\"admin@dotc.com\",\"role\":\"ADMIN\",\"is_active\":true,\"created_at\":\"2026-04-13T08:29:44.371Z\",\"updated_at\":\"2026-04-13T14:01:00.113Z\"}",
+  "dotc_admin_refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImViZTBmZjk0LWYwMzAtNDcxOS04NDdkLTE0NDczMzI2Mjc5YyIsInR5cGUiOiJhZG1pbiIsImlhdCI6MTc3NzYzMDIwOSwiZXhwIjoxNzgwMjIyMjA5fQ.nZCRYTtfdoHNmFhcFeE8_iZwjPYvZVKBvS4l9xaRq10"
+}

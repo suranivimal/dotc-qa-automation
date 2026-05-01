@@ -1,0 +1,13 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-002:logger.py:104 [96m[Step 01] Enter invalid email[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Email input'[0m
+INFO     TC-LOGIN-002:logger.py:104 [96m[Step 02] Enter valid password[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Password input'[0m
+INFO     TC-LOGIN-002:logger.py:104 [96m[Step 03] Click Continue button[0m
+INFO     base_page:base_page.py:71 [96mClicking → Continue button[0m
+INFO     TC-LOGIN-002:logger.py:104 [96m[Step 04] Validate error message is shown[0m
+INFO     TC-LOGIN-002:logger.py:107 [96m[Step 04] ✅ PASSED — Error handled correctly for invalid email[0m
+INFO     conftest:conftest.py:195 [96mVideo recorded → reports/videos/test_invalid_email_shows_error_chromium_.webm[0m

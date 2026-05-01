@@ -1,0 +1,10 @@
+10:09:45 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+10:09:47 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+10:09:47 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+10:09:47 │ [92mINFO    [0m │ TC-LOGIN-015 │ [96m[Step 01] Enter email with leading/trailing spaces: '  test@example.com  '[0m
+10:09:47 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+10:09:47 │ [92mINFO    [0m │ TC-LOGIN-015 │ [96m[Step 02] Get the actual value of email field[0m
+10:09:47 │ [92mINFO    [0m │ TC-LOGIN-015 │ [96m[Step 03] Verify spaces are trimmed: 'test@example.com'[0m
+10:09:47 │ [92mINFO    [0m │ TC-LOGIN-015 │ [96m[Step 03] ✅ PASSED — Email whitespace trimming works[0m
+10:09:47 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_email_whitespace_trimming_chromium_.webm[0m
