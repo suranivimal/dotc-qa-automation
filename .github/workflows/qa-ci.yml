@@ -1,0 +1,284 @@
+name: DOTC QA Automation
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: "Test suite to run"
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - smoke
+          - regression
+          - login
+          - user_management
+          - filters
+          - search
+          - pagination
+      headed:
+        description: "Run browser in headed mode (visible)"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────────
+  #  QA Tests
+  # ─────────────────────────────────────────────────────────────────────────
+  qa-tests:
+    name: Run QA Tests (${{ github.event.inputs.test_suite || 'all' }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    env:
+      DOTC_BASE_URL:              ${{ secrets.DOTC_BASE_URL }}
+      DOTC_EMAIL:                 ${{ secrets.DOTC_EMAIL }}
+      DOTC_PASSWORD:              ${{ secrets.DOTC_PASSWORD }}
+      HEADLESS:                   ${{ github.event.inputs.headed == 'true' && 'false' || 'true' }}
+      SLOW_MO:                    "0"
+      SMTP_SERVER:                ${{ secrets.SMTP_SERVER }}
+      SMTP_PORT:                  ${{ secrets.SMTP_PORT }}
+      SMTP_USERNAME:              ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD:              ${{ secrets.SMTP_PASSWORD }}
+      EMAIL_FROM:                 ${{ secrets.EMAIL_FROM }}
+      EMAIL_TO:                   ${{ secrets.EMAIL_TO }}
+      EMAIL_CC:                   ${{ secrets.EMAIL_CC }}
+      EMAIL_NOTIFICATIONS_ENABLED: ${{ secrets.EMAIL_NOTIFICATIONS_ENABLED || 'false' }}
+
+    steps:
+      # ── Checkout ────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Python ──────────────────────────────────────────────────────────
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      # ── Dependencies ─────────────────────────────────────────────────────
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Playwright + Chromium
+        run: playwright install chromium --with-deps
+
+      # ── Prepare report directories ───────────────────────────────────────
+      - name: Create report directories
+        run: |
+          mkdir -p reports/allure-results
+          mkdir -p reports/screenshots
+          mkdir -p reports/videos
+          mkdir -p reports/bugs
+          mkdir -p reports/logs
+
+      # ── Run Tests ────────────────────────────────────────────────────────
+      - name: Run full test suite
+        if: ${{ github.event.inputs.test_suite == 'all' || github.event.inputs.test_suite == '' || github.event_name != 'workflow_dispatch' }}
+        run: |
+          pytest \
+            --alluredir=reports/allure-results \
+            --browser=chromium \
+            -v \
+            --tb=short
+        continue-on-error: true
+
+      - name: Run selected test suite
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test_suite != 'all' && github.event.inputs.test_suite != '' }}
+        run: |
+          pytest \
+            -m "${{ github.event.inputs.test_suite }}" \
+            --alluredir=reports/allure-results \
+            --browser=chromium \
+            -v \
+            --tb=short
+        continue-on-error: true
+
+      # ── Allure Report ────────────────────────────────────────────────────
+      - name: Install Allure CLI
+        if: always()
+        run: |
+          wget -qO allure.tgz https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          tar -xzf allure.tgz
+          sudo mv allure-2.27.0 /opt/allure
+          sudo ln -sf /opt/allure/bin/allure /usr/local/bin/allure
+          allure --version
+
+      - name: Generate Allure HTML report
+        if: always()
+        run: |
+          allure generate reports/allure-results --clean -o reports/allure-report
+        continue-on-error: true
+
+      # ── Upload Artifacts ─────────────────────────────────────────────────
+      - name: Upload Allure Results (raw)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-${{ github.run_number }}
+          path: reports/allure-results/
+          retention-days: 30
+
+      - name: Upload Allure HTML Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-report-${{ github.run_number }}
+          path: reports/allure-report/
+          retention-days: 30
+
+      - name: Upload Excel Test Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-cases-excel-${{ github.run_number }}
+          path: reports/test_cases.xlsx
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Upload Test Logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-logs-${{ github.run_number }}
+          path: reports/logs/
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Upload Failure Screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots-${{ github.run_number }}
+          path: reports/screenshots/
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Upload Test Videos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: videos-${{ github.run_number }}
+          path: reports/videos/
+          retention-days: 7
+          if-no-files-found: warn
+
+      - name: Upload Bug Reports (JSON)
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: bug-reports-${{ github.run_number }}
+          path: reports/bugs/
+          retention-days: 30
+          if-no-files-found: warn
+
+      # ── Publish Allure to GitHub Pages (main branch only) ────────────────
+      - name: Deploy Allure report to GitHub Pages
+        if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: reports/allure-report
+          destination_dir: allure/${{ github.run_number }}
+          keep_files: true
+
+      # ── PR Comment with Test Summary ─────────────────────────────────────
+      - name: Post test summary to PR
+        if: always() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const runNumber = '${{ github.run_number }}';
+            const status = '${{ job.status }}';
+            const emoji = status === 'success' ? '✅' : '❌';
+
+            const body = [
+              `## ${emoji} QA Test Results — Run #${runNumber}`,
+              '',
+              `**Status:** ${status.toUpperCase()}`,
+              `**Branch:** \`${{ github.head_ref }}\``,
+              `**Suite:** \`${{ github.event.inputs.test_suite || 'all' }}\``,
+              '',
+              '### Artifacts',
+              `- 📊 [Allure Report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`,
+              `- 📸 Screenshots uploaded as \`screenshots-${runNumber}\``,
+              `- 📹 Videos uploaded as \`videos-${runNumber}\``,
+              `- 📋 Excel report uploaded as \`test-cases-excel-${runNumber}\``,
+            ].join('\n');
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            });
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #  Smoke Gate — Checks smoke tests pass before merging
+  # ─────────────────────────────────────────────────────────────────────────
+  smoke-gate:
+    name: Smoke Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: github.event_name == 'pull_request'
+
+    env:
+      DOTC_BASE_URL:  ${{ secrets.DOTC_BASE_URL }}
+      DOTC_EMAIL:     ${{ secrets.DOTC_EMAIL }}
+      DOTC_PASSWORD:  ${{ secrets.DOTC_PASSWORD }}
+      HEADLESS:       "true"
+      SLOW_MO:        "0"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium --with-deps
+
+      - name: Create report directories
+        run: mkdir -p reports/allure-results reports/screenshots reports/bugs reports/logs
+
+      - name: Run smoke tests
+        run: |
+          pytest -m smoke \
+            --alluredir=reports/allure-results \
+            --browser=chromium \
+            -v \
+            --tb=short
+
+      - name: Upload smoke test artifacts on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: smoke-failure-${{ github.run_number }}
+          path: |
+            reports/screenshots/
+            reports/allure-results/
+            reports/logs/
+          retention-days: 7
+          if-no-files-found: warn

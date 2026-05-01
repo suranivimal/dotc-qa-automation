@@ -1,0 +1,174 @@
+name: DOTC QA Nightly Regression
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # Every night at 02:00 UTC
+  workflow_dispatch:
+    inputs:
+      notify_email:
+        description: "Send email notification on completion"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+jobs:
+  nightly-regression:
+    name: Full Regression Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    env:
+      DOTC_BASE_URL:               ${{ secrets.DOTC_BASE_URL }}
+      DOTC_EMAIL:                  ${{ secrets.DOTC_EMAIL }}
+      DOTC_PASSWORD:               ${{ secrets.DOTC_PASSWORD }}
+      HEADLESS:                    "true"
+      SLOW_MO:                     "0"
+      SMTP_SERVER:                 ${{ secrets.SMTP_SERVER }}
+      SMTP_PORT:                   ${{ secrets.SMTP_PORT }}
+      SMTP_USERNAME:               ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD:               ${{ secrets.SMTP_PASSWORD }}
+      EMAIL_FROM:                  ${{ secrets.EMAIL_FROM }}
+      EMAIL_TO:                    ${{ secrets.EMAIL_TO }}
+      EMAIL_CC:                    ${{ secrets.EMAIL_CC }}
+      EMAIL_NOTIFICATIONS_ENABLED: ${{ github.event.inputs.notify_email || 'true' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Playwright + Chromium
+        run: playwright install chromium --with-deps
+
+      - name: Create report directories
+        run: |
+          mkdir -p reports/allure-results
+          mkdir -p reports/screenshots
+          mkdir -p reports/videos
+          mkdir -p reports/bugs
+          mkdir -p reports/logs
+
+      - name: Run full regression suite
+        id: tests
+        run: |
+          pytest \
+            -m regression \
+            --alluredir=reports/allure-results \
+            --browser=chromium \
+            -v \
+            --tb=long \
+            -q
+        continue-on-error: true
+
+      - name: Install Allure CLI
+        if: always()
+        run: |
+          wget -qO allure.tgz https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          tar -xzf allure.tgz
+          sudo mv allure-2.27.0 /opt/allure
+          sudo ln -sf /opt/allure/bin/allure /usr/local/bin/allure
+
+      - name: Generate Allure HTML report
+        if: always()
+        run: allure generate reports/allure-results --clean -o reports/allure-report
+        continue-on-error: true
+
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-allure-results-${{ github.run_number }}
+          path: reports/allure-results/
+          retention-days: 60
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-allure-report-${{ github.run_number }}
+          path: reports/allure-report/
+          retention-days: 60
+
+      - name: Upload Excel Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-excel-${{ github.run_number }}
+          path: reports/test_cases.xlsx
+          retention-days: 60
+          if-no-files-found: warn
+
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-screenshots-${{ github.run_number }}
+          path: reports/screenshots/
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Upload Videos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-videos-${{ github.run_number }}
+          path: reports/videos/
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Upload Bug Reports
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: nightly-bugs-${{ github.run_number }}
+          path: reports/bugs/
+          retention-days: 60
+          if-no-files-found: warn
+
+      - name: Deploy Allure report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: reports/allure-report
+          destination_dir: nightly/${{ github.run_number }}
+          keep_files: true
+
+      - name: Create GitHub issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().split('T')[0];
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `❌ Nightly Regression Failed — ${today}`,
+              body: [
+                '## Nightly Regression Failure',
+                '',
+                `**Run:** [#${{ github.run_number }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`,
+                `**Date:** ${today}`,
+                `**Branch:** \`${{ github.ref_name }}\``,
+                '',
+                '### Artifacts',
+                '- Screenshots and videos attached to the workflow run',
+                '- Bug reports (JSON) in `nightly-bugs-${{ github.run_number }}` artifact',
+                '- Excel test report in `nightly-excel-${{ github.run_number }}` artifact',
+                '',
+                '> Auto-created by nightly regression workflow',
+              ].join('\n'),
+              labels: ['bug', 'qa-regression', 'automated'],
+            });

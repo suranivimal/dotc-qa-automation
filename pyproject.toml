@@ -1,0 +1,20 @@
+[project]
+name = "dotc-qa-automation"
+version = "1.0.0"
+description = "DOTC Admin Panel QA Automation Suite"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+markers = [
+    "login: Login module tests",
+    "user_management: User Management module tests",
+    "smoke: Critical path smoke tests",
+    "regression: Full regression suite",
+    "edge_case: Edge / corner case tests",
+    "security: Security-focused tests",
+    "filters: Filter functionality tests",
+    "search: Search functionality tests",
+    "detail: User detail page tests",
+    "pagination: Pagination functionality tests",
+    "bug: Bug regression tests",
+]

@@ -1,0 +1,14 @@
+{
+  "bug_id": "BUG_UNKNOWN_20260430_173426",
+  "title": "Test Failure: UNKNOWN - test_filter_dropdown_cursor_is_pointer[chromium]",
+  "description": "Test case UNKNOWN failed during automated execution.\n\nTest Function: test_filter_dropdown_cursor_is_pointer[chromium]\nFailure Timestamp: 2026-04-30T17:34:26.040569",
+  "steps_to_reproduce": "1. Set up test environment with the following configuration:\n   - Browser: Chromium (Playwright)\n   - Headless: False\n   - Viewport: 1920x1080\n   - Slow Motion: 0ms\n   - Base URL: https://admin-dotc.alianhub.com\n\n2. Run the test suite using pytest.\n\n3. Execute the specific test case: test_filter_dropdown_cursor_is_pointer[chromium] (TC: UNKNOWN)\n\n4. Observe the failure.",
+  "environment": "- Operating System: Windows 11\n- Python Version: 3.13.5\n- Browser: Chromium\n- Headless Mode: False\n- Viewport Size: 1920x1080\n- Base URL: https://admin-dotc.alianhub.com\n- Test Framework: pytest + Playwright",
+  "actual_result": "Status filter dropdown should have cursor:'pointer', got 'default'\nassert 'default' == 'pointer'\n  \n  - pointer\n  + default",
+  "expected_result": "Test should pass without any failures or errors.",
+  "screenshot_path": "reports/screenshots/failure_test_filter_dropdown_cursor_is_pointer[chromium]_20260430_173425.png",
+  "video_path": null,
+  "created_at": "2026-04-30T17:34:26.040606",
+  "test_case_id": "UNKNOWN",
+  "test_name": "test_filter_dropdown_cursor_is_pointer[chromium]"
+}

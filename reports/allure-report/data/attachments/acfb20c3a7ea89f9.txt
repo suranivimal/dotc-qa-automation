@@ -1,0 +1,22 @@
+18:18:33 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+18:18:33 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com/[0m
+18:18:34 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+18:18:34 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+18:18:34 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+18:18:34 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+18:18:35 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+18:18:35 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+18:18:35 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+18:18:38 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+18:18:38 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+18:18:38 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+18:18:38 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+18:18:39 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+18:18:39 │ [92mINFO    [0m │ TC-UM-004 │ [96m[Step 01] Retrieve column headers[0m
+18:18:43 │ [92mINFO    [0m │ user_mgmt_page │ [96mTable columns found: ['NAME', 'EMAIL', 'LOCATION', 'STATUS', 'DATING MODE', 'ACTIONS'][0m
+18:18:43 │ [92mINFO    [0m │ TC-UM-004 │ [96m[Step 02] Expected columns: ['Name', 'Email', 'Location', 'Status', 'Dating Mode', 'Actions'][0m
+18:18:43 │ [92mINFO    [0m │ TC-UM-004 │ [96m[Step 03] Actual columns:   ['NAME', 'EMAIL', 'LOCATION', 'STATUS', 'DATING MODE', 'ACTIONS'][0m
+18:18:43 │ [92mINFO    [0m │ user_mgmt_page │ [96mTable columns found: ['NAME', 'EMAIL', 'LOCATION', 'STATUS', 'DATING MODE', 'ACTIONS'][0m
+18:18:43 │ [92mINFO    [0m │ user_mgmt_page │ [96mAll expected columns present ✓[0m
+18:18:43 │ [92mINFO    [0m │ TC-UM-004 │ [96m[Step 03] ✅ PASSED — All expected columns are present[0m
+18:18:51 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos\test_table_columns_chromium_.webm[0m
