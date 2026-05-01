@@ -1,0 +1,18 @@
+08:49:20 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+08:49:22 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+08:49:22 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+08:49:22 │ [92mINFO    [0m │ TC-LOGIN-001 │ [96m[Step 01] Enter valid email[0m
+08:49:22 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+08:49:22 │ [92mINFO    [0m │ TC-LOGIN-001 │ [96m[Step 02] Enter valid password[0m
+08:49:22 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+08:49:23 │ [92mINFO    [0m │ TC-LOGIN-001 │ [96m[Step 03] Click Continue button[0m
+08:49:23 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+08:49:23 │ [92mINFO    [0m │ TC-LOGIN-001 │ [96m[Step 04] Wait for dashboard to load[0m
+08:49:23 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+08:49:26 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+08:49:26 │ [92mINFO    [0m │ TC-LOGIN-001 │ [96m[Step 05] Validate URL changed away from login[0m
+08:49:26 │ [92mINFO    [0m │ TC-LOGIN-001 │ [96m[Step 05] ✅ PASSED — Redirected to: https://admin-dotc.alianhub.com/dashboard[0m
+08:49:26 │ [92mINFO    [0m │ TC-LOGIN-001 │ [96m[Step 06] Validate dashboard indicator is visible[0m
+08:49:26 │ [92mINFO    [0m │ TC-LOGIN-001 │ [96m[Step 06] ✅ PASSED — Dashboard content is visible[0m
+08:49:28 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_valid_login_redirects_to_dashboard_chromium_.webm[0m

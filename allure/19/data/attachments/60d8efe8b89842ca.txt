@@ -1,0 +1,17 @@
+08:49:44 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+08:49:46 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+08:49:46 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+08:49:46 │ [92mINFO    [0m │ TC-LOGIN-023 │ [96m[Step 01] Login with valid credentials[0m
+08:49:46 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+08:49:46 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+08:49:46 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+08:49:46 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+08:49:47 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+08:49:47 │ [92mINFO    [0m │ TC-LOGIN-023 │ [96m[Step 02] Confirm dashboard is loaded before logout[0m
+08:49:47 │ [92mINFO    [0m │ TC-LOGIN-023 │ [96m[Step 03] Perform logout[0m
+08:49:52 │ [92mINFO    [0m │ base_page │ [96mClicking → Logout button[0m
+08:49:52 │ [92mINFO    [0m │ login_page │ [96mLogged out successfully[0m
+08:49:54 │ [92mINFO    [0m │ TC-LOGIN-023 │ [96m[Step 04] Verify redirected back to login page[0m
+08:49:54 │ [92mINFO    [0m │ TC-LOGIN-023 │ [96m[Step 04] ✅ PASSED — Logout redirected to login page successfully[0m
+08:49:55 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_logout_redirects_to_login_chromium_.webm[0m

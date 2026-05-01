@@ -1,0 +1,11 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-007:logger.py:104 [96m[Step 01] Verify email input is visible[0m
+INFO     TC-LOGIN-007:logger.py:107 [96m[Step 01] ✅ PASSED — Email input visible[0m
+INFO     TC-LOGIN-007:logger.py:104 [96m[Step 02] Verify password input is visible[0m
+INFO     TC-LOGIN-007:logger.py:107 [96m[Step 02] ✅ PASSED — Password input visible[0m
+INFO     TC-LOGIN-007:logger.py:104 [96m[Step 03] Verify Continue button is visible[0m
+INFO     TC-LOGIN-007:logger.py:107 [96m[Step 03] ✅ PASSED — Continue button visible[0m
+INFO     conftest:conftest.py:196 [96mVideo recorded → reports/videos/test_login_page_elements_visible_chromium_.webm[0m

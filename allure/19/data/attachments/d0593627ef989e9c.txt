@@ -1,0 +1,17 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-023:logger.py:104 [96m[Step 01] Login with valid credentials[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Email input'[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Password input'[0m
+INFO     base_page:base_page.py:71 [96mClicking → Continue button[0m
+INFO     login_page:login_page.py:119 [96mWaiting for dashboard to load…[0m
+INFO     login_page:login_page.py:130 [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+INFO     TC-LOGIN-023:logger.py:104 [96m[Step 02] Confirm dashboard is loaded before logout[0m
+INFO     TC-LOGIN-023:logger.py:104 [96m[Step 03] Perform logout[0m
+INFO     base_page:base_page.py:71 [96mClicking → Logout button[0m
+INFO     login_page:login_page.py:144 [96mLogged out successfully[0m
+INFO     TC-LOGIN-023:logger.py:104 [96m[Step 04] Verify redirected back to login page[0m
+INFO     TC-LOGIN-023:logger.py:107 [96m[Step 04] ✅ PASSED — Logout redirected to login page successfully[0m
+INFO     conftest:conftest.py:196 [96mVideo recorded → reports/videos/test_logout_redirects_to_login_chromium_.webm[0m

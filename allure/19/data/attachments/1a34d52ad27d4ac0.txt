@@ -1,0 +1,18 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-001:logger.py:104 [96m[Step 01] Enter valid email[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Email input'[0m
+INFO     TC-LOGIN-001:logger.py:104 [96m[Step 02] Enter valid password[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Password input'[0m
+INFO     TC-LOGIN-001:logger.py:104 [96m[Step 03] Click Continue button[0m
+INFO     base_page:base_page.py:71 [96mClicking → Continue button[0m
+INFO     TC-LOGIN-001:logger.py:104 [96m[Step 04] Wait for dashboard to load[0m
+INFO     login_page:login_page.py:119 [96mWaiting for dashboard to load…[0m
+INFO     login_page:login_page.py:130 [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+INFO     TC-LOGIN-001:logger.py:104 [96m[Step 05] Validate URL changed away from login[0m
+INFO     TC-LOGIN-001:logger.py:107 [96m[Step 05] ✅ PASSED — Redirected to: https://admin-dotc.alianhub.com/dashboard[0m
+INFO     TC-LOGIN-001:logger.py:104 [96m[Step 06] Validate dashboard indicator is visible[0m
+INFO     TC-LOGIN-001:logger.py:107 [96m[Step 06] ✅ PASSED — Dashboard content is visible[0m
+INFO     conftest:conftest.py:196 [96mVideo recorded → reports/videos/test_valid_login_redirects_to_dashboard_chromium_.webm[0m
