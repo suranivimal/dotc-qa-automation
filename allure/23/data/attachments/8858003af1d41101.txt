@@ -1,0 +1,27 @@
+09:42:08 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+09:42:08 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:42:10 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:42:10 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:42:10 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+09:42:10 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:42:10 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+09:42:10 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:42:10 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+09:42:11 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+09:42:11 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+09:42:11 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+09:42:11 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+09:42:14 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+09:42:14 │ [92mINFO    [0m │ TC-UM-013 │ [96m[Step 01] Get a real (non-placeholder) name to use as search term[0m
+09:42:14 │ [92mINFO    [0m │ user_mgmt_page │ [96mParsed 10 user rows[0m
+09:42:14 │ [92mINFO    [0m │ TC-UM-013 │ [96m[Step 02] Searching for name: 'Rp'[0m
+09:42:14 │ [92mINFO    [0m │ user_mgmt_page │ [96mSearching for: 'Rp'[0m
+09:42:14 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Search input'[0m
+09:42:18 │ [92mINFO    [0m │ TC-UM-013 │ [96m[Step 03] Validate results contain search term[0m
+09:42:18 │ [92mINFO    [0m │ user_mgmt_page │ [96mVisible table rows: 3[0m
+09:42:18 │ [92mINFO    [0m │ user_mgmt_page │ [96mParsed 3 user rows[0m
+09:42:18 │ [92mINFO    [0m │ user_mgmt_page │ [96mParsed 3 user rows[0m
+09:42:18 │ [92mINFO    [0m │ user_mgmt_page │ [96mAll 3 rows match search term 'Rp' ✓[0m
+09:42:18 │ [92mINFO    [0m │ TC-UM-013 │ [96m[Step 03] ✅ PASSED — Search by name returned 3 matching result(s)[0m
+09:42:18 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_search_by_name_chromium_.webm[0m

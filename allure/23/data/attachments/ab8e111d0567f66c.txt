@@ -1,0 +1,12 @@
+INFO     conftest:conftest.py:212 [96mAuthenticating as admin@dotc.com[0m
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     login_page:login_page.py:106 [96mPerforming login with email: admin@dotc.com[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Email input'[0m
+INFO     base_page:base_page.py:84 [96mClearing & filling 'Password input'[0m
+INFO     base_page:base_page.py:71 [96mClicking → Continue button[0m
+INFO     login_page:login_page.py:119 [96mWaiting for dashboard to load…[0m
+WARNING  base_page:base_page.py:119 [96mScreenshot saved → reports/screenshots/dashboard_load_timeout_20260501_094749.png[0m
+INFO     conftest:conftest.py:195 [96mVideo recorded → reports/videos/test_dating_mode_filter_option_labels_chromium_.webm[0m

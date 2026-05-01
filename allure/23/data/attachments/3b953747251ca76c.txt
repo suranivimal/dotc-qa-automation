@@ -1,0 +1,12 @@
+09:47:16 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+09:47:16 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:47:19 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:47:19 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:47:19 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+09:47:19 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:47:19 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+09:47:19 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:47:19 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+09:47:49 │ [93mWARNING [0m │ base_page │ [96mScreenshot saved → reports/screenshots/dashboard_load_timeout_20260501_094749.png[0m
+09:47:58 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_dating_mode_filter_option_labels_chromium_.webm[0m

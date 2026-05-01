@@ -1,0 +1,9 @@
+INFO     base_page:base_page.py:43 [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+INFO     base_page:base_page.py:46 [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+INFO     login_page:login_page.py:85 [96mLogin page loaded successfully[0m
+INFO     TC-LOGIN-018:logger.py:104 [96m[Step 01] Check for form labels on page[0m
+INFO     TC-LOGIN-018:logger.py:104 [96m[Step 02] Verify email and password labels are present in HTML[0m
+INFO     TC-LOGIN-018:logger.py:104 [96m[Step 03] Verify input elements are present[0m
+INFO     TC-LOGIN-018:logger.py:107 [96m[Step 03] ✅ PASSED — Form labels are properly associated with inputs[0m
+INFO     conftest:conftest.py:195 [96mVideo recorded → reports/videos/test_form_labels_association_chromium_.webm[0m

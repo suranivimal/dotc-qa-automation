@@ -1,0 +1,49 @@
+09:40:50 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+09:40:50 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:40:53 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:40:53 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:40:53 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+09:40:53 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:40:53 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+09:40:53 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:40:53 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+09:40:54 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+09:40:54 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+09:40:54 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+09:40:54 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+09:40:56 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+09:40:57 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[1] options: ['All Dating Modes', 'Dating Mode Active', 'Dating Mode Inactive'][0m
+09:40:57 │ [92mINFO    [0m │ TC-UM-027 │ [96m[Step 01] Testing 3 dating mode option(s): ['All Dating Modes', 'Dating Mode Active', 'Dating Mode Inactive'][0m
+09:40:57 │ [92mINFO    [0m │ TC-UM-027 │ [96m[Step 02] Apply Dating Mode filter: 'All Dating Modes'[0m
+09:40:57 │ [92mINFO    [0m │ user_mgmt_page │ [96mApplying Dating Mode filter: 'All Dating Modes'[0m
+09:40:57 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[1] → 'All Dating Modes'[0m
+09:41:00 │ [92mINFO    [0m │ user_mgmt_page │ [96mVisible table rows: 10[0m
+09:41:00 │ [92mINFO    [0m │ TC-UM-027 │ [96m[Step 03] Dating Mode='All Dating Modes' → 10 row(s), no-data=False[0m
+09:41:00 │ [92mINFO    [0m │ user_mgmt_page │ [96mResetting all filters[0m
+09:41:00 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[0] options: ['All Status', 'Active', 'Suspended'][0m
+09:41:00 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[0] → 'All Status'[0m
+09:41:01 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[1] options: ['All Dating Modes', 'Dating Mode Active', 'Dating Mode Inactive'][0m
+09:41:01 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[1] → 'All Dating Modes'[0m
+09:41:04 │ [92mINFO    [0m │ TC-UM-027 │ [96m[Step 04] Apply Dating Mode filter: 'Dating Mode Active'[0m
+09:41:04 │ [92mINFO    [0m │ user_mgmt_page │ [96mApplying Dating Mode filter: 'Dating Mode Active'[0m
+09:41:04 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[1] → 'Dating Mode Active'[0m
+09:41:07 │ [92mINFO    [0m │ user_mgmt_page │ [96mVisible table rows: 1[0m
+09:41:07 │ [92mINFO    [0m │ TC-UM-027 │ [96m[Step 05] Dating Mode='Dating Mode Active' → 1 row(s), no-data=True[0m
+09:41:07 │ [92mINFO    [0m │ user_mgmt_page │ [96mResetting all filters[0m
+09:41:07 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[0] options: ['All Status', 'Active', 'Suspended'][0m
+09:41:07 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[0] → 'All Status'[0m
+09:41:08 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[1] options: ['All Dating Modes', 'Dating Mode Active', 'Dating Mode Inactive'][0m
+09:41:08 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[1] → 'All Dating Modes'[0m
+09:41:11 │ [92mINFO    [0m │ TC-UM-027 │ [96m[Step 06] Apply Dating Mode filter: 'Dating Mode Inactive'[0m
+09:41:11 │ [92mINFO    [0m │ user_mgmt_page │ [96mApplying Dating Mode filter: 'Dating Mode Inactive'[0m
+09:41:11 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[1] → 'Dating Mode Inactive'[0m
+09:41:13 │ [92mINFO    [0m │ user_mgmt_page │ [96mVisible table rows: 10[0m
+09:41:13 │ [92mINFO    [0m │ TC-UM-027 │ [96m[Step 07] Dating Mode='Dating Mode Inactive' → 10 row(s), no-data=False[0m
+09:41:13 │ [92mINFO    [0m │ user_mgmt_page │ [96mResetting all filters[0m
+09:41:14 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[0] options: ['All Status', 'Active', 'Suspended'][0m
+09:41:14 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[0] → 'All Status'[0m
+09:41:15 │ [92mINFO    [0m │ user_mgmt_page │ [96mCombobox[1] options: ['All Dating Modes', 'Dating Mode Active', 'Dating Mode Inactive'][0m
+09:41:15 │ [92mINFO    [0m │ user_mgmt_page │ [96mSelecting combobox[1] → 'All Dating Modes'[0m
+09:41:18 │ [92mINFO    [0m │ TC-UM-027 │ [96m[Step 07] ✅ PASSED — All 3 dating mode option(s) verified successfully[0m
+09:41:18 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_dating_mode_filter_all_options_chromium_.webm[0m

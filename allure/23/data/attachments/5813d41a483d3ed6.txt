@@ -1,0 +1,24 @@
+09:43:02 │ [92mINFO    [0m │ conftest │ [96mAuthenticating as admin@dotc.com[0m
+09:43:02 │ [92mINFO    [0m │ base_page │ [96mNavigating to → https://admin-dotc.alianhub.com
+/[0m
+09:43:04 │ [92mINFO    [0m │ base_page │ [96mPage loaded — current URL: https://admin-dotc.alianhub.com/[0m
+09:43:04 │ [92mINFO    [0m │ login_page │ [96mLogin page loaded successfully[0m
+09:43:04 │ [92mINFO    [0m │ login_page │ [96mPerforming login with email: admin@dotc.com[0m
+09:43:04 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Email input'[0m
+09:43:04 │ [92mINFO    [0m │ base_page │ [96mClearing & filling 'Password input'[0m
+09:43:04 │ [92mINFO    [0m │ base_page │ [96mClicking → Continue button[0m
+09:43:04 │ [92mINFO    [0m │ login_page │ [96mWaiting for dashboard to load…[0m
+09:43:05 │ [92mINFO    [0m │ login_page │ [96mDashboard loaded — URL: https://admin-dotc.alianhub.com/dashboard[0m
+09:43:05 │ [92mINFO    [0m │ conftest │ [96mAuthentication complete — page is ready[0m
+09:43:05 │ [92mINFO    [0m │ user_mgmt_page │ [96mNavigating to User Management section[0m
+09:43:05 │ [92mINFO    [0m │ base_page │ [96mClicking → User Management sidebar link[0m
+09:43:07 │ [92mINFO    [0m │ user_mgmt_page │ [96mUser Management page loaded successfully[0m
+09:43:08 │ [92mINFO    [0m │ user_mgmt_page │ [96mParsed 10 user rows[0m
+09:43:08 │ [92mINFO    [0m │ TC-UM-018 │ [96m[Step 01] Navigate to user detail (row 0)[0m
+09:43:08 │ [92mINFO    [0m │ user_mgmt_page │ [96mClicking View on row index 0[0m
+09:43:12 │ [92mINFO    [0m │ TC-UM-018 │ [96m[Step 02] Verify detail container is visible[0m
+09:43:12 │ [92mINFO    [0m │ TC-UM-018 │ [96m[Step 03] Verify page has meaningful content[0m
+09:43:12 │ [92mINFO    [0m │ TC-UM-018 │ [96m[Step 04] Verify user name is present on detail page[0m
+09:43:12 │ [92mINFO    [0m │ TC-UM-018 │ [96m[Step 05] Verify user email is present on detail page[0m
+09:43:12 │ [92mINFO    [0m │ TC-UM-018 │ [96m[Step 05] ✅ PASSED — Detail page shows name='RP', email='rp@gmail.com'[0m
+09:43:13 │ [92mINFO    [0m │ conftest │ [96mVideo recorded → reports/videos/test_user_detail_fields_chromium_.webm[0m
