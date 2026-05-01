@@ -77,42 +77,67 @@ def _extract_failure_summary(raw_message: str) -> str:
     return lines[0][:200] if lines else "An unexpected error occurred during the test."
 
 
+def _invert_should_not(sentence: str) -> str:
+    """Convert 'X should NOT be visible' → 'X IS visible' (describes what actually happened)."""
+    result = re.sub(r'\bshould\s+not\s+be\b', 'IS', sentence, count=1, flags=re.IGNORECASE)
+    if result != sentence:
+        return result.strip()
+    _GERUNDS = {
+        'appear': 'appearing', 'show': 'showing', 'display': 'displaying',
+        'exist': 'existing', 'render': 'rendering', 'contain': 'containing',
+    }
+    def _to_gerund(m):
+        verb = m.group(1).lower()
+        return 'IS ' + _GERUNDS.get(verb, verb + 'ing')
+    result = re.sub(r'\bshould\s+not\s+(\w+)\b', _to_gerund, sentence, count=1, flags=re.IGNORECASE)
+    if result != sentence:
+        return result.strip()
+    result = re.sub(
+        r'\bmust\s+not\s+(\w+)\b',
+        lambda m: 'IS ' + _GERUNDS.get(m.group(1).lower(), m.group(1) + 'ing'),
+        sentence, count=1, flags=re.IGNORECASE,
+    )
+    return result.strip()
+
+
 def _extract_actual_expected(failure_summary: str) -> tuple[str, str]:
     """
     Parse a human-readable assertion message into (actual_result, expected_result).
 
     Handles common patterns written in the test assertions:
-      • "X should be 'Y', got 'Z'"        → actual: Z,  expected: Y
-      • "X, got 'Z'"                       → actual: Z,  expected: the part before 'got'
-      • "X should NOT ..."                 → actual: the condition occurred, expected: it should not
-      • "X must not ..."                   → same
-      • "Expected X rows / X message ..."  → actual: condition not met, expected: X
-      • Fallback                           → actual: full message, expected: generic
+      • "X, got 'Z'"           → actual: Z,     expected: X
+      • "A. B"  (2 sentences)  → actual: A,     expected: B
+      • "X should NOT ..."     → actual: inverted phrase, expected: full msg
+      • "Expected ..."         → actual: generic mismatch, expected: full msg
+      • Fallback               → actual: generic, expected: full msg
     """
     msg = failure_summary.strip()
 
-    # Pattern: "..., got 'Z'" or "..., got Z"
-    got_match = re.search(r",\s*got\s+['\"]?(.+?)['\"]?\s*$", msg, re.IGNORECASE)
+    # 1. "..., got 'Z'" or "..., got Z" — explicit value comparison
+    got_match = re.search(r",\s*got\s+['\"]?([^'\"]+?)['\"]?\s*$", msg, re.IGNORECASE)
     if got_match:
-        actual = f"Got: {got_match.group(1).strip()}"
-        expected = msg[:got_match.start()].strip().rstrip('.,')
-        return actual, expected
+        actual_val = got_match.group(1).strip()
+        expected_part = msg[:got_match.start()].strip().rstrip('.,')
+        return f"Actual value: {actual_val}", expected_part
 
-    # Pattern: "should NOT ..." or "must not ..."
-    if re.search(r"\bshould\s+not\b|\bmust\s+not\b", msg, re.IGNORECASE):
-        return f"The condition described above occurred: {msg}", \
-               "This condition should NOT occur — see message above"
+    # 2. Multi-sentence: "First sentence. Second sentence" — first = what happened, second = expected
+    split = re.split(r'\.\s+(?=[A-Z0-9\'\"])', msg, maxsplit=1)
+    if len(split) == 2 and len(split[0]) > 15 and len(split[1]) > 10:
+        first, rest = split[0].strip(), split[1].strip()
+        if re.search(r'\bshould\s+not\b|\bmust\s+not\b', first, re.IGNORECASE):
+            return _invert_should_not(first), msg
+        return first, rest
 
-    # Pattern starts with "Expected ..."
-    if msg.lower().startswith("expected"):
-        return "The actual result did not match what was expected", msg
+    # 3. Single-sentence "should NOT" / "must not"
+    if re.search(r'\bshould\s+not\b|\bmust\s+not\b', msg, re.IGNORECASE):
+        return _invert_should_not(msg), msg
 
-    # Pattern: "X found in Y" — something unwanted was present
-    if re.search(r"\bfound\b", msg, re.IGNORECASE):
-        return msg, "The item described above should NOT have been found"
+    # 4. Starts with "Expected ..."
+    if re.match(r'^expected\b', msg, re.IGNORECASE):
+        return "Actual result did not match the expectation", msg
 
-    # Fallback
-    return msg, "The test should complete without the above error"
+    # 5. Fallback
+    return "Test assertion was not satisfied", msg
 
 
 def create_bug_report(
