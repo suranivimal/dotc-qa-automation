@@ -35,8 +35,6 @@ dotc-qa-automation/
 │   │   └── qa-nightly.yml       # Nightly full regression at 02:00 UTC
 │   └── SECRETS.md               # Guide for configuring GitHub Actions secrets
 │
-├── EMAIL_SETUP.md               # Guide for configuring SMTP email notifications
-│
 └── reports/                     # Auto-generated (not committed)
     ├── allure-results/          # Raw Allure data
     ├── allure-report/           # Generated HTML report
@@ -124,7 +122,41 @@ pytest -m edge_case
 | `EMAIL_TO`       | —                                  | Recipient address          |
 | `EMAIL_NOTIFICATIONS_ENABLED` | `false`             | Enable email on failure    |
 
-See `EMAIL_SETUP.md` for full email notification setup guide.
+---
+
+## Email Notifications
+
+When a test fails, an email is automatically sent with the bug title, test details, failure description, and screenshot attachment. The Excel report is also updated with FAIL status.
+
+### Setup (.env file)
+
+Add the following to your `.env` file:
+
+```env
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+EMAIL_FROM=your-email@gmail.com
+EMAIL_TO=qa-team@yourcompany.com
+EMAIL_CC=manager@yourcompany.com
+EMAIL_NOTIFICATIONS_ENABLED=true
+```
+
+### Gmail App Password
+
+1. Enable 2-Factor Authentication on your Google account
+2. Go to **Google Account → Security → 2-Step Verification → App passwords**
+3. Generate a password for "Mail" and use it as `SMTP_PASSWORD`
+
+### Troubleshooting
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| Email not sending | Missing env vars | Check all `SMTP_*` variables are set |
+| Authentication failed | Wrong password | Use App Password, not your regular Gmail password |
+| Connection timeout | Firewall blocking | Check port 587 is allowed |
+| Invalid address | Wrong format | Use comma-separated for multiple `EMAIL_TO` |
 
 ---
 
